@@ -1,3 +1,5 @@
+import yaml
+
 head = """
 <!doctype html>
 <html lang="en">
@@ -71,12 +73,75 @@ mainBegin = """
         </div>
 
         <div class="content">
-            <h2 class="content-subhead">How to use this layout</h2>
-            <p>
-                To use this layout, you can just copy paste the HTML, along with the CSS in <a href="/css/layouts/side-menu.css" alt="Side Menu CSS">side-menu.css</a>, and the JavaScript in <a href="js/ui.js">ui.js</a>. The JS file uses vanilla JavaScript to simply toggle an <code>active</code> class that makes the menu responsive.
-            </p>
-
+        
 """
 
+ending = """
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="js/ui.js"></script>
+
+</body>
+</html>
+"""
+
+def addHeaderBody(string, header, body):
+    string += """
+                <h2 class="content-subhead">"""+str(header)+"""</h2>
+                <p>
+                """+str(body)+"""
+                </p>
+    """
+    return string
+    
+def addList(string, list):
+    string += "<ul>"
+    for item in list:
+        string += """
+                <ul>
+                <li>
+                    """+str(item)+"""
+                </li>"""
+    string += "</ul>"
+    return string
+
+
+def addListLinks(string, linkDict):
+    string += "<ul>"
+    for i in linkDict:
+        string += """
+                <ul>
+                <li>
+                    <a href="""+str(linkDict[i])+""">
+                    """+str(i)+"""</a>
+                </li>"""
+    
+    
+    string +=  "</ul>"
+    
+    return string
+  
+fileString = head + menu + mainBegin
+
+test = yaml.load(open("test.yaml"))
+for each in test:
+    if type(test[each]) is str:
+        fileString += addHeaderBody(fileString, each, test[each])
+
+    if type(test[each]) is list:
+        fileString += addHeaderBody(fileString, each, addList('', test[each]))
+        
+    if type(test[each]) is dict:
+        fileString += addHeaderBody(fileString, each, addListLinks('', test[each]))
+    
+fileString += ending
+
+with open('test.html', 'w+') as outputfile:
+    outputfile.write(fileString)
 # add some code here to accept inputs and add some new posts
 # especially if it makes the headder and stuff. need to think more about this.
