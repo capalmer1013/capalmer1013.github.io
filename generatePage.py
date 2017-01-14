@@ -103,7 +103,6 @@ def addList(string, list):
     string += "<ul>"
     for item in list:
         string += """
-                <ul>
                 <li>
                     """+str(item)+"""
                 </li>"""
@@ -115,7 +114,6 @@ def addListLinks(string, linkDict):
     string += "<ul>"
     for i in linkDict:
         string += """
-                <ul>
                 <li>
                     <a href="""+str(linkDict[i])+""">
                     """+str(i)+"""</a>
@@ -131,13 +129,13 @@ fileString = head + menu + mainBegin
 test = yaml.load(open("test.yaml"))
 for each in test:
     if type(test[each]) is str:
-        fileString += addHeaderBody(fileString, each, test[each])
+        fileString = addHeaderBody(fileString, each, test[each])
 
     if type(test[each]) is list:
-        fileString += addHeaderBody(fileString, each, addList('', test[each]))
+        fileString = addHeaderBody(fileString, each, addList('', test[each]))
         
     if type(test[each]) is dict:
-        fileString += addHeaderBody(fileString, each, addListLinks('', test[each]))
+        fileString = addHeaderBody(fileString, each, addListLinks('', test[each]))
     
 fileString += ending
 
