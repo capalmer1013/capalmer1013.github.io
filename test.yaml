@@ -1,3 +1,7 @@
+# this is something to test later
+# I'd like to see if putting a list inside of a regular text post will work
+# who knows. it probably doesn't recurse that deep
+1/14/2017: General text post [listitem1, listitem2]
 1/12/2017: this is a test post
 1/11/2017: [here's a thing, here's another, here's another, this is a list]
 1/10/2017: {header1: link1, header2: link2}
