@@ -122,7 +122,41 @@
 name: inverse
 layout: true
 class: center, middle, inverse
+---
+# Everything You Wish You Never Knew About Big-O Notation.
 
+[Chris Palmer](https://github.com/capalmer1013)
+---
+layout: false
+.left-column[
+## Big-O notation in 30 seconds.
+]
+.right-column[
+Used to describe the performance of an algorithm in the worst-case scenario.
+
+- **O(1)**: Constant time e.g. accessing an element in an array.
+
+- **O(n)**: Linear Time e.g. searching an unsorted array.
+
+- **O(n^2)**: Polynomial Time e.g. searching an unsorted 2d array.
+    - With polynomial time Big-O notation is simplified to largest exponent.
+
+- **O(2^n)**: Exponential Time e.g. recursive Fibonacci algorithm.
+    ```c++
+    int fib(int n){
+        if(n <= 1) return n;
+        return fib(n-2) + fib(n-1)
+    }
+    ```
+
+- **O(log N)**: Logarithmic Time e.g. Binary Search
+    - whenever the working set is halved on each iteration.
+]>
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
 ---
 # Array-Based Lists
 
@@ -392,16 +426,127 @@ class ArrayList(int initialSize)
 ]
 .footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
 
+---
+.left-column[
+n = 5
+
+i = 3
+
+x = 5
+
+j = ?
+]
+.right-column[
 ```
 adding 5 at 3: add(3, 5)
-isthismonospace
-mmmwwwmwmwmwmww
+
+             (5)
 | 3 | 4 | 2 | 4 | 5 |   |   |
+
 -----------------------------
   0   1   2   3   4   5   6  
 ```
+]
 ---
+.left-column[
+n = 5
 
+i = 3
+
+x = 5
+
+j = 5
+]
+.right-column[
+```
+adding 5 at 3: add(3, 5)
+
+             (5)
+| 3 | 4 | 2 | 4 | 5 | 5 |   |
+                  \___/
+-----------------------------
+  0   1   2   3   4   5   6  
+  
+  
+```
+
+```c++
+add(int i, T x){
+	for(int j = n; j > i; j--){
+		array[j] = array[j - 1];
+	}
+	a[i] = x;
+	n++;
+}
+```
+]
+---
+.left-column[
+n = 5
+
+i = 3
+
+x = 5
+
+j = 4
+]
+.right-column[
+```
+adding 5 at 3: add(3, 5)
+
+             (5)
+| 3 | 4 | 2 | 4 | 4 | 5 |   |
+              \___/
+-----------------------------
+  0   1   2   3   4   5   6  
+  
+  
+```
+
+```c++
+add(int i, T x){
+	for(int j = n; j > i; j--){
+		array[j] = array[j - 1];
+	}
+	a[i] = x;
+	n++;
+}
+```
+]
+---
+.left-column[
+n = 6
+
+i = 3
+
+x = 5
+
+j = 4
+]
+.right-column[
+```
+adding 5 at 3: add(3, 5)
+
+             (5)
+| 3 | 4 | 2 | 5 | 4 | 5 |   |
+
+-----------------------------
+  0   1   2   3   4   5   6  
+  
+  
+```
+
+```c++
+add(int i, T x){
+	for(int j = n; j > i; j--){
+		array[j] = array[j - 1];
+	}
+	a[i] = x;
+	n++;
+}
+```
+]
+---
 
 .left-column[
   ## ArrayList
@@ -423,9 +568,339 @@ class ArrayList(int initialSize)
 	}
 }
 ```
+essentially reverse is the same but backwards
 ]
 .footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
 
+---
+.left-column[
+## Amortized Resize Function
+]
+
+.right-column[
+- Every time `resize()` is called, the array is copied into the first half of a new array that is twice the size.
+
+- Because of **Math** this means that the total time spent calling `resize()` averages out to O(m), where m is the number of calls to `add(i, x)` and `remove(i)`.
+
+- This linear growth is derived using *Amortized Analysis*
+    - Instead of analyzing the cost of the individual calls to `add(i, x)` and `remove(i)` it considers the cost of calls in a sequence.
+]
+
+
+---
+.left-column[
+## Amortized Resize Function
+## FastArrayStack *not really a stack*
+]
+
+.right-column[
+- The book uses some slick built in functions to give perfomance increases to **add** and **remove**
+
+- Instead of using a for loop to move each value on at a time, they use built in functions to move contiguous memory to another location.
+
+- This can be helpful because of micro-optimizations built in.
+
+- However, it doesn't change the Big-O time of O(n-i)
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# ArrayQueue
+---
+layout: false
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+a = Infinite Array
+
+|...|   |   | 2 | 5 | 1 | 7 | 3 |   |   |   |...|
+-------------------------------------------------
+              f               b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+enqueue(7)
+                                 (7)
+|...|   |   | 2 | 5 | 1 | 7 | 3 |   |   |   |...|
+-------------------------------------------------
+              f               b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+enqueue(7)
+                                 (7)
+|...|   |   | 2 | 5 | 1 | 7 | 3 | 7 |   |   |...|
+-------------------------------------------------
+              f               b ->b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+dequeue(): return a[f]
+                                 
+|...|   |   | 2 | 5 | 1 | 7 | 3 | 7 |   |   |...|
+-------------------------------------------------
+              f                   b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+dequeue(): return a[f] -> 2
+                                 
+|...|   |   |   | 5 | 1 | 7 | 3 | 7 |   |   |...|
+-------------------------------------------------
+              f ->f               b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+
+                                 
+|...|   |   |   | 5 | 1 | 7 | 3 | 7 |   |   |...|
+-------------------------------------------------
+                  f               b
+```
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Modular Arithmetic %
+---
+layout: false
+.left-column[
+## ArrayQueue
+## Mod %
+]
+
+.right-column[
+The modulo operator returns the remainder from a division operation.
+
+Super Awesome integer arithmetic.
+
+**Examples**
+- 7 % 5 = 2 because: 7/5 = 1 r 2
+- 5 % 7 = 5 because: 5/7 = 0 r 5
+- 7 % 7 = 0 because: 7/7 = 1 r 0
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+Finite Array :-( lyk if u cri evry tim
+                                 
+| 1 | 4 |   |   |   |   |
+-------------------------
+  f   b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+enqueue(7)
+         (7)    
+| 1 | 4 |   |   |   |   |
+-------------------------
+  f   b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+enqueue(7)
+
+| 1 | 4 | 7 |   |   |   |
+-------------------------
+  f   b ->b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+
+    
+| 1 | 4 | 7 |   |   |   |
+-------------------------
+  f       b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue(): return a[f]
+  
+| 1 | 4 | 7 |   |   |   |
+-------------------------
+  f       b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue(): return a[f]
+    
+| 1 | 4 | 7 |   |   |   |
+-------------------------
+  f ->f    b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue(): return a[f] -> 1
+ (1)  
+|   | 4 | 7 |   |   |   |
+-------------------------
+      f   b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+enqueue(8), enqueue(9), enqueue(0)
+
+|   | 4 | 7 | 8 | 9 | 0 |
+-------------------------
+      f       -> -> ->b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue() -> 4, dequeue() -> 7
+
+|   |   |   | 8 | 9 | 0 |
+-------------------------
+      f -> -> f       b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue() -> 4, dequeue() -> 7
+
+|   |   |   | 8 | 9 | 0 |
+-------------------------
+              f       b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+enqueue(1), enqueue(2)
+
+| 1 | 2 |   | 8 | 9 | 0 |
+-------------------------
+ -> ->b       f       ->
+```
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# [Robot Video](https://www.youtube.com/watch?v=CDmP-MCKLZ4)
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
