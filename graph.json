@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    {"atom": "", "size": 6},
+    {"atom": "", "size": 6},
+    {"atom": "", "size": 6},
+	{"atom": "", "size": 6},
+	{"atom": "", "size": 6},
+	{"atom": "", "size": 6},
+	{"atom": "", "size": 6},
+	{"atom": "", "size": 6}
+  ],
+  "links": [
+    {"source": 0, "target": 1,  "bond": 1},
+    {"source": 1, "target": 2,  "bond": 1},
+    {"source": 2, "target": 3,  "bond": 1},
+	{"source": 3, "target": 4,  "bond": 1},
+	{"source": 3, "target": 5,  "bond": 1},
+	{"source": 3, "target": 6,  "bond": 1},
+	{"source": 5, "target": 7,  "bond": 1},
+	{"source": 5, "target": 6,  "bond": 1}
+  ]
+}
