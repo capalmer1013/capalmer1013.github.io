@@ -1,8 +1,9 @@
 //var width = 400,
 //    height = 400;
 var width = document.getElementById('graph-div').offsetWidth;
-var height = document.getElementById('graph-div').offsetWidth;
-
+var height = document.getElementById('graph-div').offsetWidth - 150;
+//var width = "10%",
+//	height = "10%"
 var color = d3.scale.category20();
 
 var radius = d3.scale.sqrt()

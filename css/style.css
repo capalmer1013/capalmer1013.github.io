@@ -15,7 +15,16 @@ a {
   text-decoration: inherit; /* no underline */
   font-family: 'Raleway', sans-serif;
 }
-
+li {
+    list-style:none;
+    background-image:none;
+    background-repeat:none;
+    background-position:0; 
+}
+li:before {
+	
+    content: "\03BB";
+}
 a:hover {
   -webkit-animation: neon6 1.5s ease-in-out infinite alternate;
   -moz-animation: neon6 1.5s ease-in-out infinite alternate;
