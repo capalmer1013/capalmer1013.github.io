@@ -4,90 +4,103 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
-    <title>Resume</title>
+
+    <title>Chris Palmer</title>
     
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity "sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/resume.css"
 </head>
 <body>
+    <div class="container">
+        <div id="header">
+            <h1>Christopher A. Palmer</h1>
+            <h2>Software Engineer - Pittsburgh, PA</h2>
+        </div>
+    <div class="row">
+        <div class=".col-sm-6">
+            <h3>Education</h3>
+                <h4>Youngstown State University - Younstown, OH - December 2015</h4>
+                    <ul>
+                        <li>BSAS in Computer Information Systems Fall 2015</li>
+                        <li>Minor in Music</li>
+                        <li>Dean's list 2013, 2014, 2015</li>
+                        <li>Senior Project: Developed software to automatically correct eye-tracking data drift, presented methodology at YSU's QUEST student showcase. Published paper on results in peer reviewed journal</li>
+                    </ul>
 
-<h1>Christopher A. Palmer</h1>
-<h2>Software Engineer - Pittsburgh, PA</h2>
+            <h3>Experience</h3>
+                <h4>Iam Robotics - Pittsburgh, PA - Software Engineer, June 2016 - Present</h4>
+                    <ul>
+                        <li>Developing Software for:</li>
+                            <ul>
+                                <li>logging robot activity to be used in data mining</li>
+                                <li>user interface for validating robot accuracy</li>
+                                <li>development tools</li>
+                                <li>low level hardware drivers</li>
+                                <li>Autonomy software to interface with hardware.</li>
+                            </ul>
+                        <li>Using code coverage, profiling, and cyclomatic complexity tools for testing and debugging real time, distributed systems</li>
+                    </ul>
+                <h4>Youngstown State University - Youngstown, OH - Web Programmer Internship, 2014 - 2015</h4>
+                    <ul>
+                        <li>Developed and updated web applications for the YSU website using PHP, HTML, CSS, JavaScript, JQuery, AngularJS, and Laravel</li>
+                        <li>Communicated project goals and implementation details with other developers and management.</li>
 
-<h3>Education</h3>
-    <h4>Youngstown State University - Younstown, OH - December 2015</h4>
-        <ul>
-            <li>BSAS in Computer Information Systems Fall 2015</li>
-            <li>Minor in Music</li>
-            <li>Dean's list 2013, 2014, 2015</li>
-            <li>Senior Project: Developed software to automatically correct eye-tracking data drift, presented methodology at YSU's QUEST student showcase. Published paper on results in peer reviewed journal</li>
-        </ul>
+                    </ul>
+                <h4>Younstown State University - Youngstown, OH - Research Assistant, 2012 - 2015</h4>
+                    <ul>
+                        <li>Conducted literature reviews, collected and analyzed research data, and developed applications using Visual Basic Applications.</li>
+                        <li>Presented project outline and goals to management at St. Elizabeth Health Center in order to obtain industry professionals as research</li>
 
-<h3>Experience</h3>
-    <h4>Iam Robotics - Pittsburgh, PA - Software Engineer, June 2016 - Present</h4>
-        <ul>
-            <li>Developing Software for:</li>
-                <ul>
-                    <li>logging robot activity to be used in data mining</li>
-                    <li>user interface for validating robot accuracy</li>
-                    <li>development tools</li>
-                    <li>low level hardware drivers</li>
-                    <li>Autonomy software to interface with hardware.</li>
-                </ul>
-            <li>Using code coverage, profiling, and cyclomatic complexity tools for testing and debugging real time, distributed systems</li>
-        </ul>
-    <h4>Youngstown State University - Youngstown, OH - Web Programmer Internship, 2014 - 2015</h4>
-        <ul>
-            <li>Developed and updated web applications for the YSU website using PHP, HTML, CSS, JavaScript, JQuery, AngularJS, and Laravel</li>
-            <li>Communicated project goals and implementation details with other developers and management.</li>
-
-        </ul>
-    <h4>Younstown State University - Youngstown, OH - Research Assistant, 2012 - 2015</h4>
-        <ul>
-            <li>Conducted literature reviews, collected and analyzed research data, and developed applications using Visual Basic Applications.</li>
-            <li>Presented project outline and goals to management at St. Elizabeth Health Center in order to obtain industry professionals as research</li>
-
-        </ul>
-<h3>Project Highlights</h3>
-    <h4><a href="https://github.com/capalmer1013/Music-Gen">Music-Gen</a></h4>
-        <ul>
-            <li>Artificial Neural Network application to 'learn' music from examples and generate new music</li>
-            <li>Implemented in Python using music21 library for xml parsing</li>
-            <li>Written at HackYSU, won 2nd place</li>
-        </ul>
-    <h4>Publication - <a href="http://dl.acm.org/citation.cfm?id=2857544">Towards automating fixation correction for source code</a> - ETRA 2016</h4>
-        <ul>
-            <li>Developed an algorithm to automate eye tracking error correction.</li>
-            <li>Presented findings at 2016 conference.</li>
-        </ul>
-    <h4>Mahoning Valley Materials Exchange Web Application – ysu.edu</h4>
-        <ul>
-            <li>Web app for local businesses to search and request available materials</li>
-            <li>Implemented using Laravel PHP framework, JQuery, AngularJS, Javascript, PHP, and HTML</li>
-        </ul>
-    <h4>Stem Leadership Society Application Form – ysu.edu</h4>
-        <ul>
-            <li>Updated previous form and database relations in order for application data to be more scalable</li>
-        </ul>
-    <h4>Eye-Tracking Data Correction Algorithm</h4>
-        <ul>
-            <li>Developed algorithm to predict occurrences of drift in eye tracking data and perform appropriate corrections</li>
-            <li>Implemented in Python using SciPy stack particularly NumPy</li>
-        </ul>
-    <h4>Eye-Tracking Manual Correction Application</h4>
-        <ul>
-            <li>Created an application to open eye-tracking stimuli files and eye-tracking scanpath data files and make manual adjustments visually</li>
-            <li>Used VB.NET to parse data files and display scan path data overlayed on eye-tracking stimuli while making corrections</li>
-        </ul>
-<h3>Activities</h3>
-<ul>
-    <li>YSU Software Engineering Research and Empirical Studies Lab (SERESL) - 2015</li>
-    <li>YSU Student ACM – Vice-President (Association for Computing Machinery) - 2015</li>
-    <li>Tutoring for CSIS programming courses - 2013 - 2015</li>
-    <li>Hackathons: (Kent Hack Enough – 2014, 2015, 2016(mentor)) (Hack YSU - 2015, 2016)</li>
-</ul>
-
-
+                    </ul>
+        </div>
+        <div class=".col-sm-6">
+            <h3>Project Highlights</h3>
+                <h4><a href="https://github.com/capalmer1013/Music-Gen">Music-Gen</a></h4>
+                    <ul>
+                        <li>Artificial Neural Network application to 'learn' music from examples and generate new music</li>
+                        <li>Implemented in Python using music21 library for xml parsing</li>
+                        <li>Written at HackYSU, won 2nd place</li>
+                    </ul>
+                <h4>Publication - <a href="http://dl.acm.org/citation.cfm?id=2857544">Towards automating fixation correction for source code</a> - ETRA 2016</h4>
+                    <ul>
+                        <li>Developed an algorithm to automate eye tracking error correction.</li>
+                        <li>Presented findings at 2016 conference.</li>
+                    </ul>
+                <h4>Mahoning Valley Materials Exchange Web Application – ysu.edu</h4>
+                    <ul>
+                        <li>Web app for local businesses to search and request available materials</li>
+                        <li>Implemented using Laravel PHP framework, JQuery, AngularJS, Javascript, PHP, and HTML</li>
+                    </ul>
+                <h4>Stem Leadership Society Application Form – ysu.edu</h4>
+                    <ul>
+                        <li>Updated previous form and database relations in order for application data to be more scalable</li>
+                    </ul>
+                <h4>Eye-Tracking Data Correction Algorithm</h4>
+                    <ul>
+                        <li>Developed algorithm to predict occurrences of drift in eye tracking data and perform appropriate corrections</li>
+                        <li>Implemented in Python using SciPy stack particularly NumPy</li>
+                    </ul>
+                <h4>Eye-Tracking Manual Correction Application</h4>
+                    <ul>
+                        <li>Created an application to open eye-tracking stimuli files and eye-tracking scanpath data files and make manual adjustments visually</li>
+                        <li>Used VB.NET to parse data files and display scan path data overlayed on eye-tracking stimuli while making corrections</li>
+                    </ul>
+            <h3>Activities</h3>
+            <ul>
+                <li>YSU Software Engineering Research and Empirical Studies Lab (SERESL) - 2015</li>
+                <li>YSU Student ACM – Vice-President (Association for Computing Machinery) - 2015</li>
+                <li>Tutoring for CSIS programming courses - 2013 - 2015</li>
+                <li>Hackathons: (Kent Hack Enough – 2014, 2015, 2016(mentor)) (Hack YSU - 2015, 2016)</li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 
