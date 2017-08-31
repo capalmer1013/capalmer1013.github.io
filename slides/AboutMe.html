@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About Me</title>
+    <meta charset="utf-8">
+	<style>
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# About Me
+
+[Chris Palmer](https://github.com/capalmer1013)
+
+Github: capalmer1013
+
+Email: capalmer1013@gmail.com
+
+Websites: cupguy.me, capalmer1013.github.io
+---
+layout: false
+.left-column[
+## My Background
+]
+.right-column[
+
+- Started at YSU as a Music Education Major (Dana School of Music)
+    - Studied French Horn
+    - Decided music "wasn't for me" because of performance requirements.
+
+- Switched to Computer Information Systems.
+    - Did the wrong thing for finding interesting subfield (DFS)
+    - Wrote a paper on an algorithm I developed for automatically correcting eye-tracking drift
+    - Got an interview with Google because of publication
+    - Bombed the combinatorics section
+
+- Software Engineer at IAM Robotics
+    - Autonomous Piece-Picking robotics startup Pittsburgh, PA
+    - Realized how bad I was at the Engineering part of Software Engineering
+]
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# My Time at YSU
+
+[Chris Palmer](https://github.com/capalmer1013)
+
+
+---
+
+layout: false
+.left-column[
+  ## Music Major to Software Engineer
+]
+.right-column[
+- Music:
+    - Composition
+    - Theory
+        - Analysis
+    - History
+    
+- Computer Information Systems (the DFS of doom)
+    - Compilers
+    - FSM
+    - Automata
+    - Graph Theory
+
+- Music Generation Program
+    - 2nd YSU hackathon
+    - Bayesian Networks
+]
+---
+
+layout: false
+.left-column[
+  ## IAM Robotics
+]
+.right-column[
+- Robotics/Warehouse Automation Startup Pittsburgh, PA
+    - Generic material handling robot
+- Warehouse Process:
+    - order sent to warehouse
+    - picker receives order (Headphone voice system)
+    - picker goes to item location, picks product, sends order off on transfer system
+    - rinse, repeat (6 months later 50% of pickers have quit)
+
+- Kiva (Amazon) system:
+    - Robots have to be integrated at the time warehouse is built (embedded localization system in floor)
+    - Robot drives to shelf
+    - picks up shelf
+    - moves it to picking station where pickers grab items off shelf
+]
+---
+layout: false
+.left-column[
+  ## IAM Robotics
+]
+.right-column[
+![IAM Robotics](logo.svg)
+
+- IAM Robotics Process:
+    - Integration: location markers on shelves
+
+    - Robot gets order
+
+    - drives to item locations
+
+    - picks products into tote
+
+    - products get sent on conveyor system
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# [Robot Video](https://www.youtube.com/watch?v=8bJfOn_d5CU)
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
