@@ -182,10 +182,8 @@ layout: false
 	- My attempt at Generative music
 
 - Performance
-	- Installment
 	- Live Coding
 
-- Notable People
 - How to get started with Computer Music
 ]
 
@@ -206,10 +204,11 @@ layout: false
   ## Computers
 ]
 .right-column[
-- Computers manipulate data with instructions
-- 
+- an device for storing and processing data, according to instructions given to it in a program.
+- Turing machines
+- game of life John Conway
 ]
-
+![Game Of Life](https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif)
 ---
 name: inverse
 layout: true
@@ -224,14 +223,15 @@ class: center, middle, inverse
 ---
 layout: false
 .left-column[
-  ## Outline
+  ## Music: Wiggly air
 ]
 .right-column[
-```
-sudo apt update
-sudo apt install sonic-pi
-qjackctl
-```
+- John Cage 4'33"
+- [What is music?](https://www.youtube.com/watch?v=GeoDIVVP20M)
+- Graphical Notation
+- Steve Reich Pendulum music, Phase music
+- Terry Riley [In C](http://www.mtrs.co.uk/subscriptions/Downloads/minimalism_OK/in_C.pdf)
+![Pendulum](./pendulum.jpg)
 ]
 ---
 name: inverse
@@ -252,7 +252,6 @@ layout: false
 - [Tristan Perich](http://www.tristanperich.com/)
 ]
 .right-column[
-```
 
 - Performed and Composed by Humans
 	- most music before DAW (Digital Audio Workstation)
@@ -273,7 +272,6 @@ layout: false
 - Performed by Computers, Composed by Computers
 	- Google Magenta
 	
-```
 ]
 ---
 name: inverse
@@ -290,7 +288,6 @@ layout: false
   - [mp3](https://drive.google.com/open?id=0ByM0MDtF4kC9NTZETnZ2eUE3aGs)
 ]
 .right-column[
-```
 
 - Music was learned from Bach Minuet in G
 - States were interval transitions
@@ -302,10 +299,62 @@ layout: false
 		- Store rhythmic dissonance scores in rhythm graph
 	- second pass:
 		- Store Note intervals in note graph
-	
+  
+- Music generation algorithm:
+      - traverse probablistic rhythmic graph to create note Rhythms
+      - do the same for notes
 
-```
+- makes weird creepy music because misrepresented states
+
 ]
+---
+layout: false
+.left-column[
+  ## Markov Chains
+  - [Sheet music](https://drive.google.com/open?id=0ByM0MDtF4kC9MWdyMGFnejRiakE)
+  - [mp3](https://drive.google.com/open?id=0ByM0MDtF4kC9NTZETnZ2eUE3aGs)
+]
+.right-column[
+
+- Markov chains are okay at representing sequential Information
+- auto-correct on phone
+- poetry generator
+- twitter bot
+- more complicated states are difficult
+- Robot Play
+
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# How to Get Started with Live Coding
+![Chord Progressions](./coding.jpg)
+---
+layout: false
+.left-column[
+  ## Live Coding
+  - [Kodelife](https://hexler.net/software/kodelife/)
+  - [Sonic Pi](https://sonic-pi.net/)
+]
+.right-column[
+```
+sudo apt update
+sudo apt install sonic-pi
+qjackctl
+```
+- Demo!
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Live Coding Tonight ~1 hr away
+[Live Coding Event](https://www.facebook.com/events/320033645494963/)
+---
+# Thank You
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
