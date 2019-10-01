@@ -30,12 +30,21 @@
 
 
 
-        var geometry = new THREE.SphereGeometry(1, 32, 32);
+        var geometry = new THREE.SphereGeometry(3, 32, 32);
+        var wireframe = new THREE.WireframeGeometry(geometry);
+        var line = new THREE.LineSegments(wireframe);
+        line.material.depthTest = false;
+        line.material.opacity = 0.5;
+        line.material.transparent = true;
+
+        scene.add(line);
         var material = new THREE.MeshBasicMaterial({ color: 0x00fff0 });
+        material.reflectivity = 0.5;
         var sphere = new THREE.Mesh(geometry, material);
         scene.add(sphere);
-        var light = new THREE.AmbientLight(0x404040); // soft white light
-        scene.add(light);
+
+        // var light = new THREE.AmbientLight(0x404040); // soft white light
+        // scene.add(light);
 
         // var geometry = new THREE.BoxGeometry(1, 1, 1);
         // var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -50,6 +59,8 @@
             // cube.rotation.y += 0.01;
             sphere.rotation.y += 0.01;
             sphere.rotation.x += 0.01;
+            line.rotation.y = sphere.rotation.y;
+            line.rotation.x = sphere.rotation.x;
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
         }
