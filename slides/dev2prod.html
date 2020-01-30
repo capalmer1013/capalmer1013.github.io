@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Development to Production, Quickly and Reliably.</title>
+    <meta charset="utf-8">
+	<style>
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+      
+      /*table {border-collapse: collapse;}
+      table, th, td {border: 1px solid #ccc;}*/
+      th{background: #fff}
+      tr:nth-child(even) {background: #fff}
+      tr:nth-child(odd) {background: #ccc}
+      img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Development to Production, Quickly and Reliably.
+
+[Chris Palmer](https://github.com/capalmer1013)
+---
+layout: false
+.left-column[
+## How to deliver value and eliminate distractions.
+]
+.right-column[
+- **Version Control**: Issues and Documentation as close to the code as possible.
+
+- **Platform**: Build for SaaS, because the benefits (except upgrades) transfer to deployed systems.
+
+- **Backing Services**: Treat backing services as attached resources.
+
+- **Development**: Keep development, staging, and production as similar as possible.
+
+- **Testing**: Automated integration tests, manual UI and performance tests, high code coverage(80%+).
+
+- **Deployment**: Automatic deployment after testing passes.
+]
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Version Control
+"The codebase is the same across all deploys, although different versions may be active in each deploy. " - [The Twelve-Factor App](https://12factor.net/codebase)
+
+---
+layout: false
+.left-column[
+  ## Version Control: Git
+]
+.right-column[
+- Branches should rarely be more than 1 level removed from master/develop.
+
+- The master branch should auto-deploy to staging/testing servers on merge.
+
+- The master branch should be protected from committing directly and only allow merges from approved Pull Pull-Requests.
+
+- Feature and bug fix branches should be automatically deleted upon merge.
+
+- Version control should feed into the Continous Integration pipeline.
+
+- New features and behavior changes documented first (as design), automated tests, implementation.
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Platform
+"Have a clean contract with the underlying operating system, offering maximum portability between execution environments." - [The Twelve-Factor App](https://12factor.net)
+
+# Dev/prod parity
+"Continuous deployment is the idea that you push out changes to your code base all the time instead of doing large builds and pushing out big chunks of code." -    [Fred Wilson](https://avc.com/2011/02/continuous-deployment/)
+---
+layout: false
+.left-column[
+  ## Dev/prod parity
+]
+.right-column[
+
+|  | Traditional app | 12 factor app |
+|--------------------------|------------------|-----------------------|
+| Time between deploys | Weeks | Hours |
+| Developers vs Deployers | Different people | Same people |
+| Dev vs Prod environments | Divergent | As similar as possibe |
+
+
+- **Make the time gap small**: a developer may write code and have it deployed hours or even just minutes later.
+
+- **Make the personnel gap small**: developers who wrote code are closely involved in deploying it and watching its behavior in production.
+
+- **Make the tools gap small**: keep development and production as similar as possible.
+]
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# Backing Services
+"The code for a twelve-factor app makes no distinction between local and third party services." - (The Twelve-Factor App)[https://12factor.net/backing-services]
+---
+layout: false
+.left-column[
+  ## Backing Services
+]
+.right-column[
+The app should be able to swap out a local resource such as a database with one managed by a third party without any changes to the app’s code.
+
+![Attached Resources](https://12factor.net/images/attached-resources.png)
+
+]
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# Concurrency
+
+---
+layout: false
+.left-column[
+  ## Scale out via the process model
+]
+.right-column[
+![Process Model](https://12factor.net/images/process-types.png)
+
+- Borrowing from the Unix process model 
+- By sharing nothing, adding more concurrency is a simple and reliable operation. 
+]
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# Develpment, Testing, Production demo
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
