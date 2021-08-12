@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array-Based Lists</title>
+    <meta charset="utf-8">
+	<style>
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Slick One Liners
+## An introduction to comprehensions in python
+
+[Chris Palmer](https://github.com/capalmer1013)
+---
+layout: false
+.left-column[
+## Types of comprehensions in python
+]
+.right-column[
+
+- **List Comprehensions**
+
+- **Dictionary Comprehensions**
+
+- **Set Comprehensions**
+
+- **Generator Comprehensions**
+]>
+
+
+---
+layout: false
+.left-column[
+  ## List Comprehensions
+]
+.right-column[
+
+- **Traditional for loop + list append**
+```python
+result = []
+for x in range(10):
+        result.append(x)
+```
+- **List comprehension**
+```python
+result = [x for x in range(10)]
+```
+
+- **Result**
+```python
+>>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+- **Filter**
+```python
+a = []
+for x in range(10):
+        if x%2 ==0:
+            a.append(x)
+b = filter(lambda x: x%2 == 0, range(10))
+c = [x for x in range(10) if x%2 == 0]
+```
+- **Result**
+```python
+a == b == c == [0, 2, 4, 6, 8]
+```
+]
+---
+
+layout: false
+.left-column[
+  ## What are they?
+  ## Why Should I know them?
+]
+.right-column[
+1. It is **very important** to know the trade-offs associated with using any data structure.
+
+2. Knowing the algorithms can be helful for implementing them for custom use cases.
+
+
+
+### Trade-offs when using arrays
+.pull-left[
+**Pros**
+- Constant time access to any value 
+	- get(i) and set(i, x) = O(1)
+]
+.pull-right[
+**Cons**
+- Adding and removing items can be expesive depending on the size of the array.
+- When the size of the array needs to change, all elements must be copied into a new array. **Expensive**.
+]
+
+]
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# When do I use Array-Based Lists?
+
+---
+
+## Use Array-Based Lists when:
+
+- The size of the data is known, or has an upper bound.
+
+- The data is static or rarely changes.
+
+---
+
+layout: false
+
+.left-column[
+  ## ArrayList
+]
+.right-column[
+```java
+class ArrayList(int initialSize)
+{
+	T array[initialSize];
+	int n = 0;
+	public T get(int i);
+	public void set(int i, int x);
+	public void resize();  // magic
+}
+
+```
+]
+.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
+
+---
+
+.left-column[
+  ## ArrayList
+  ## Get and Set
+]
+.right-column[
+```java
+class ArrayList(int initialSize)
+{
+	T array[initialSize];
+	int n = 0;
+	public T get(int i){
+		return array[i];
+	}
+	public void set(int i, int x){
+		if(i > n) resize();
+		array[i] = x;
+	}
+	public void resize();  // magic
+}
+
+```
+]
+.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
+
+---
+
+.left-column[
+  ## ArrayList
+  ## Get and Set
+  ## Add
+]
+.right-column[
+```java
+class ArrayList(int initialSize)
+{
+	T array[initialSize];
+	int n = 1;
+	public T get(int i){
+		return array[i];
+	}
+	public void set(int i, int x){
+		if(i > n) resize();
+		array[i] = x;
+	}
+	public add(int i, T x){
+		if(n + 1 > array.length) resize();
+		for(int j = n; j > i; j--){
+			array[j] = array[j - 1];
+		}
+		array[i] = x;
+		n++;
+	}
+	private void resize();  // magic
+}
+```
+]
+.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
+
+---
+
+.left-column[
+  ## ArrayList
+  ## Get and Set
+  ## Add
+  ## Remove
+]
+.right-column[
+```java
+class ArrayList(int initialSize)
+{
+	T array[initialSize];
+	int n = 1;
+	public T get(int i){
+		return array[i];
+	}
+	public void set(int i, int x){
+		if(i > n) resize();
+		array[i] = x;
+	}
+	public add(int i, T x){
+		if(n + 1 > array.length) resize();
+		for(int j = n; j > i; j--){
+			array[j] = array[j - 1];
+		}
+		a[i] = x;
+		n++;
+	}
+	public remove(int i){
+		for(int j = n; j >= i; j--){
+			array[j - 1] = array[j];
+		}
+		n--;
+	}
+	private void resize();  // magic
+}
+```
+]
+.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
+
+---
+
+.left-column[
+  ## ArrayList
+  ## Get and Set
+  ## Add
+]
+.right-column[
+```java
+class ArrayList(int initialSize)
+{
+	T array[initialSize];
+	int n = 1;
+	public add(int i, T x){
+		if(n + 1 > array.length) resize();
+		for(int j = n; j > i; j--){
+			array[j] = array[j - 1];
+		}
+		a[i] = x;
+		n++;
+	}
+	private void resize();  // magic
+}
+```
+]
+.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
+
+---
+
+
+layout: false
+.left-column[
+  ## ArrayList
+  ## Get and Set
+  ## Add
+  ## Remove
+]
+.right-column[
+```java
+class ArrayList(int initialSize)
+{
+	T array[initialSize];
+	int n = 1;
+	public remove(int i){
+		for(int j = n; j >= i; j--){
+			array[j - 1] = array[j];
+		}
+		n--;
+	}
+}
+```
+]
+.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
+
+---
+.left-column[
+n = 5
+
+i = 3
+
+x = 5
+
+j = ?
+]
+.right-column[
+```
+adding 5 at 3: add(3, 5)
+
+             (5)
+| 3 | 4 | 2 | 4 | 5 |   |   |
+
+-----------------------------
+  0   1   2   3   4   5   6  
+```
+]
+---
+.left-column[
+n = 5
+
+i = 3
+
+x = 5
+
+j = 5
+]
+.right-column[
+```
+adding 5 at 3: add(3, 5)
+
+             (5)
+| 3 | 4 | 2 | 4 | 5 | 5 |   |
+                  \___/
+-----------------------------
+  0   1   2   3   4   5   6  
+  
+  
+```
+
+```c++
+add(int i, T x){
+	for(int j = n; j > i; j--){
+		array[j] = array[j - 1];
+	}
+	a[i] = x;
+	n++;
+}
+```
+]
+---
+.left-column[
+n = 5
+
+i = 3
+
+x = 5
+
+j = 4
+]
+.right-column[
+```
+adding 5 at 3: add(3, 5)
+
+             (5)
+| 3 | 4 | 2 | 4 | 4 | 5 |   |
+              \___/
+-----------------------------
+  0   1   2   3   4   5   6  
+  
+  
+```
+
+```c++
+add(int i, T x){
+	for(int j = n; j > i; j--){
+		array[j] = array[j - 1];
+	}
+	a[i] = x;
+	n++;
+}
+```
+]
+---
+.left-column[
+n = 6
+
+i = 3
+
+x = 5
+
+j = 4
+]
+.right-column[
+```
+adding 5 at 3: add(3, 5)
+
+             (5)
+| 3 | 4 | 2 | 5 | 4 | 5 |   |
+
+-----------------------------
+  0   1   2   3   4   5   6  
+  
+  
+```
+
+```c++
+add(int i, T x){
+	for(int j = n; j > i; j--){
+		array[j] = array[j - 1];
+	}
+	a[i] = x;
+	n++;
+}
+```
+]
+---
+
+.left-column[
+  ## ArrayList
+  ## Get and Set
+  ## Add
+  ## Remove
+]
+.right-column[
+```java
+class ArrayList(int initialSize)
+{
+	T array[initialSize];
+	int n = 1;
+	public remove(int i){
+		for(int j = n; j >= i; j--){
+			array[j - 1] = array[j];
+		}
+		n--;
+	}
+}
+```
+essentially reverse is the same but backwards
+]
+.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
+
+---
+.left-column[
+## Amortized Resize Function
+]
+
+.right-column[
+- Every time `resize()` is called, the array is copied into the first half of a new array that is twice the size.
+
+- Because of **Math** this means that the total time spent calling `resize()` averages out to O(m), where m is the number of calls to `add(i, x)` and `remove(i)`.
+
+- This linear growth is derived using *Amortized Analysis*
+    - Instead of analyzing the cost of the individual calls to `add(i, x)` and `remove(i)` it considers the cost of calls in a sequence.
+]
+
+
+---
+.left-column[
+## Amortized Resize Function
+## FastArrayStack *not really a stack*
+]
+
+.right-column[
+- The book uses some slick built in functions to give perfomance increases to **add** and **remove**
+
+- Instead of using a for loop to move each value on at a time, they use built in functions to move contiguous memory to another location.
+
+- This can be helpful because of micro-optimizations built in.
+
+- However, it doesn't change the Big-O time of O(n-i)
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# ArrayQueue
+---
+layout: false
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+a = Infinite Array
+
+|...|   |   | 2 | 5 | 1 | 7 | 3 |   |   |   |...|
+-------------------------------------------------
+              f               b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+enqueue(7)
+                                 (7)
+|...|   |   | 2 | 5 | 1 | 7 | 3 |   |   |   |...|
+-------------------------------------------------
+              f               b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+enqueue(7)
+                                 (7)
+|...|   |   | 2 | 5 | 1 | 7 | 3 | 7 |   |   |...|
+-------------------------------------------------
+              f               b ->b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+dequeue(): return a[f]
+                                 
+|...|   |   | 2 | 5 | 1 | 7 | 3 | 7 |   |   |...|
+-------------------------------------------------
+              f                   b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+dequeue(): return a[f] -> 2
+                                 
+|...|   |   |   | 5 | 1 | 7 | 3 | 7 |   |   |...|
+-------------------------------------------------
+              f ->f               b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+```
+
+                                 
+|...|   |   |   | 5 | 1 | 7 | 3 | 7 |   |   |...|
+-------------------------------------------------
+                  f               b
+```
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Modular Arithmetic %
+---
+layout: false
+.left-column[
+## ArrayQueue
+## Mod %
+]
+
+.right-column[
+The modulo operator returns the remainder from a division operation.
+
+Super Awesome integer arithmetic.
+
+**Examples**
+- 7 % 5 = 2 because: 7/5 = 1 r 2
+- 5 % 7 = 5 because: 5/7 = 0 r 5
+- 7 % 7 = 0 because: 7/7 = 1 r 0
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+Finite Array :-( lyk if u cri evry tim
+                                 
+| 1 | 4 |   |   |   |   |
+-------------------------
+  f   b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+enqueue(7)
+         (7)    
+| 1 | 4 |   |   |   |   |
+-------------------------
+  f   b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+enqueue(7)
+
+| 1 | 4 | 7 |   |   |   |
+-------------------------
+  f   b ->b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+
+    
+| 1 | 4 | 7 |   |   |   |
+-------------------------
+  f       b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue(): return a[f]
+  
+| 1 | 4 | 7 |   |   |   |
+-------------------------
+  f       b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue(): return a[f]
+    
+| 1 | 4 | 7 |   |   |   |
+-------------------------
+  f ->f    b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue(): return a[f] -> 1
+ (1)  
+|   | 4 | 7 |   |   |   |
+-------------------------
+      f   b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+enqueue(8), enqueue(9), enqueue(0)
+
+|   | 4 | 7 | 8 | 9 | 0 |
+-------------------------
+      f       -> -> ->b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue() -> 4, dequeue() -> 7
+
+|   |   |   | 8 | 9 | 0 |
+-------------------------
+      f -> -> f       b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+dequeue() -> 4, dequeue() -> 7
+
+|   |   |   | 8 | 9 | 0 |
+-------------------------
+              f       b
+```
+]
+---
+.left-column[
+## ArrayQueue
+]
+
+.right-column[
+Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+```
+enqueue(1), enqueue(2)
+
+| 1 | 2 |   | 8 | 9 | 0 |
+-------------------------
+ -> ->b       f       ->
+```
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# [Robot Video](https://www.youtube.com/watch?v=CDmP-MCKLZ4)
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
