@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Array-Based Lists</title>
+    <title>Slick one-liners</title>
     <meta charset="utf-8">
 	<style>
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
@@ -143,6 +143,15 @@ layout: false
 - **Generator Comprehensions**
 ]>
 
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# List Comprehensions
 
 ---
 layout: false
@@ -183,30 +192,38 @@ a == b == c == [0, 2, 4, 6, 8]
 ]
 ---
 
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# Dictionary Comprehensions
+
+---
+
 layout: false
 .left-column[
-  ## What are they?
-  ## Why Should I know them?
+  ## List Comprehensions
+  ## Dictionary Comprehensions
 ]
 .right-column[
-1. It is **very important** to know the trade-offs associated with using any data structure.
+- **Traditional for loop + dict element assignment**
+```python
+result = {}
+for x in range(5):
+        result[x] = x*2
+```
+- **Dict comprehension**
+```python
+a = map(lambda x: x*2, range(5))
+b = {x: x*2 for x in range(5)}
+```
 
-2. Knowing the algorithms can be helful for implementing them for custom use cases.
-
-
-
-### Trade-offs when using arrays
-.pull-left[
-**Pros**
-- Constant time access to any value 
-	- get(i) and set(i, x) = O(1)
-]
-.pull-right[
-**Cons**
-- Adding and removing items can be expesive depending on the size of the array.
-- When the size of the array needs to change, all elements must be copied into a new array. **Expensive**.
-]
-
+- **Result**
+```python
+>>> a == b == {0: 0, 1: 2, 2: 4, 3: 6, 4: 8}
+```
 ]
 
 ---
@@ -217,668 +234,99 @@ class: center, middle, inverse
 
 ---
 
-# When do I use Array-Based Lists?
-
----
-
-## Use Array-Based Lists when:
-
-- The size of the data is known, or has an upper bound.
-
-- The data is static or rarely changes.
+# Set Comprehensions
 
 ---
 
 layout: false
-
 .left-column[
-  ## ArrayList
+  ## List Comprehensions
+  ## Dictionary Comprehensions
+  ## Set Comprehensions
 ]
 .right-column[
-```java
-class ArrayList(int initialSize)
-{
-	T array[initialSize];
-	int n = 0;
-	public T get(int i);
-	public void set(int i, int x);
-	public void resize();  // magic
-}
+- **Traditional for loop + list append**
+```python
+result = []
+for x in range(10):
+        result.append(x)
+```
+- **List comprehension**
+```python
+result = [x for x in range(10)]
+```
 
+- **Result**
+```python
+>>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+- **Filter**
+```python
+a = []
+for x in range(10):
+        if x%2 ==0:
+            a.append(x)
+b = filter(lambda x: x%2 == 0, range(10))
+c = [x for x in range(10) if x%2 == 0]
+```
+- **Result**
+```python
+a == b == c == [0, 2, 4, 6, 8]
 ```
 ]
-.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
 
 ---
 
-.left-column[
-  ## ArrayList
-  ## Get and Set
-]
-.right-column[
-```java
-class ArrayList(int initialSize)
-{
-	T array[initialSize];
-	int n = 0;
-	public T get(int i){
-		return array[i];
-	}
-	public void set(int i, int x){
-		if(i > n) resize();
-		array[i] = x;
-	}
-	public void resize();  // magic
-}
-
-```
-]
-.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
-
----
-
-.left-column[
-  ## ArrayList
-  ## Get and Set
-  ## Add
-]
-.right-column[
-```java
-class ArrayList(int initialSize)
-{
-	T array[initialSize];
-	int n = 1;
-	public T get(int i){
-		return array[i];
-	}
-	public void set(int i, int x){
-		if(i > n) resize();
-		array[i] = x;
-	}
-	public add(int i, T x){
-		if(n + 1 > array.length) resize();
-		for(int j = n; j > i; j--){
-			array[j] = array[j - 1];
-		}
-		array[i] = x;
-		n++;
-	}
-	private void resize();  // magic
-}
-```
-]
-.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
-
----
-
-.left-column[
-  ## ArrayList
-  ## Get and Set
-  ## Add
-  ## Remove
-]
-.right-column[
-```java
-class ArrayList(int initialSize)
-{
-	T array[initialSize];
-	int n = 1;
-	public T get(int i){
-		return array[i];
-	}
-	public void set(int i, int x){
-		if(i > n) resize();
-		array[i] = x;
-	}
-	public add(int i, T x){
-		if(n + 1 > array.length) resize();
-		for(int j = n; j > i; j--){
-			array[j] = array[j - 1];
-		}
-		a[i] = x;
-		n++;
-	}
-	public remove(int i){
-		for(int j = n; j >= i; j--){
-			array[j - 1] = array[j];
-		}
-		n--;
-	}
-	private void resize();  // magic
-}
-```
-]
-.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
-
----
-
-.left-column[
-  ## ArrayList
-  ## Get and Set
-  ## Add
-]
-.right-column[
-```java
-class ArrayList(int initialSize)
-{
-	T array[initialSize];
-	int n = 1;
-	public add(int i, T x){
-		if(n + 1 > array.length) resize();
-		for(int j = n; j > i; j--){
-			array[j] = array[j - 1];
-		}
-		a[i] = x;
-		n++;
-	}
-	private void resize();  // magic
-}
-```
-]
-.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
-
----
-
-
-layout: false
-.left-column[
-  ## ArrayList
-  ## Get and Set
-  ## Add
-  ## Remove
-]
-.right-column[
-```java
-class ArrayList(int initialSize)
-{
-	T array[initialSize];
-	int n = 1;
-	public remove(int i){
-		for(int j = n; j >= i; j--){
-			array[j - 1] = array[j];
-		}
-		n--;
-	}
-}
-```
-]
-.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
-
----
-.left-column[
-n = 5
-
-i = 3
-
-x = 5
-
-j = ?
-]
-.right-column[
-```
-adding 5 at 3: add(3, 5)
-
-             (5)
-| 3 | 4 | 2 | 4 | 5 |   |   |
-
------------------------------
-  0   1   2   3   4   5   6  
-```
-]
----
-.left-column[
-n = 5
-
-i = 3
-
-x = 5
-
-j = 5
-]
-.right-column[
-```
-adding 5 at 3: add(3, 5)
-
-             (5)
-| 3 | 4 | 2 | 4 | 5 | 5 |   |
-                  \___/
------------------------------
-  0   1   2   3   4   5   6  
-  
-  
-```
-
-```c++
-add(int i, T x){
-	for(int j = n; j > i; j--){
-		array[j] = array[j - 1];
-	}
-	a[i] = x;
-	n++;
-}
-```
-]
----
-.left-column[
-n = 5
-
-i = 3
-
-x = 5
-
-j = 4
-]
-.right-column[
-```
-adding 5 at 3: add(3, 5)
-
-             (5)
-| 3 | 4 | 2 | 4 | 4 | 5 |   |
-              \___/
------------------------------
-  0   1   2   3   4   5   6  
-  
-  
-```
-
-```c++
-add(int i, T x){
-	for(int j = n; j > i; j--){
-		array[j] = array[j - 1];
-	}
-	a[i] = x;
-	n++;
-}
-```
-]
----
-.left-column[
-n = 6
-
-i = 3
-
-x = 5
-
-j = 4
-]
-.right-column[
-```
-adding 5 at 3: add(3, 5)
-
-             (5)
-| 3 | 4 | 2 | 5 | 4 | 5 |   |
-
------------------------------
-  0   1   2   3   4   5   6  
-  
-  
-```
-
-```c++
-add(int i, T x){
-	for(int j = n; j > i; j--){
-		array[j] = array[j - 1];
-	}
-	a[i] = x;
-	n++;
-}
-```
-]
----
-
-.left-column[
-  ## ArrayList
-  ## Get and Set
-  ## Add
-  ## Remove
-]
-.right-column[
-```java
-class ArrayList(int initialSize)
-{
-	T array[initialSize];
-	int n = 1;
-	public remove(int i){
-		for(int j = n; j >= i; j--){
-			array[j - 1] = array[j];
-		}
-		n--;
-	}
-}
-```
-essentially reverse is the same but backwards
-]
-.footnote[Referred to as ArrayStack in [book](http://opendatastructures.org/ods-python.pdf)]
-
----
-.left-column[
-## Amortized Resize Function
-]
-
-.right-column[
-- Every time `resize()` is called, the array is copied into the first half of a new array that is twice the size.
-
-- Because of **Math** this means that the total time spent calling `resize()` averages out to O(m), where m is the number of calls to `add(i, x)` and `remove(i)`.
-
-- This linear growth is derived using *Amortized Analysis*
-    - Instead of analyzing the cost of the individual calls to `add(i, x)` and `remove(i)` it considers the cost of calls in a sequence.
-]
-
-
----
-.left-column[
-## Amortized Resize Function
-## FastArrayStack *not really a stack*
-]
-
-.right-column[
-- The book uses some slick built in functions to give perfomance increases to **add** and **remove**
-
-- Instead of using a for loop to move each value on at a time, they use built in functions to move contiguous memory to another location.
-
-- This can be helpful because of micro-optimizations built in.
-
-- However, it doesn't change the Big-O time of O(n-i)
-]
----
 name: inverse
 layout: true
 class: center, middle, inverse
+
 ---
-# ArrayQueue
+
+# Generator Comprehensions
+
 ---
+
 layout: false
 .left-column[
-## ArrayQueue
+  ## List Comprehensions
+  ## Dictionary Comprehensions
+  ## Set Comprehensions
+  ## Generator Comprehensions
 ]
-
 .right-column[
-It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+- **Traditional for loop + list append**
+```python
+result = []
+for x in range(10):
+        result.append(x)
 ```
-a = Infinite Array
-
-|...|   |   | 2 | 5 | 1 | 7 | 3 |   |   |   |...|
--------------------------------------------------
-              f               b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
-```
-enqueue(7)
-                                 (7)
-|...|   |   | 2 | 5 | 1 | 7 | 3 |   |   |   |...|
--------------------------------------------------
-              f               b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
-```
-enqueue(7)
-                                 (7)
-|...|   |   | 2 | 5 | 1 | 7 | 3 | 7 |   |   |...|
--------------------------------------------------
-              f               b ->b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
-```
-dequeue(): return a[f]
-                                 
-|...|   |   | 2 | 5 | 1 | 7 | 3 | 7 |   |   |...|
--------------------------------------------------
-              f                   b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
-```
-dequeue(): return a[f] -> 2
-                                 
-|...|   |   |   | 5 | 1 | 7 | 3 | 7 |   |   |...|
--------------------------------------------------
-              f ->f               b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-It sure would be nice to have an array of Infinite length, right? Then we could just track the index of the front and back of the Queue.
+- **List comprehension**
+```python
+result = [x for x in range(10)]
 ```
 
-                                 
-|...|   |   |   | 5 | 1 | 7 | 3 | 7 |   |   |...|
--------------------------------------------------
-                  f               b
-```
-]
----
-name: inverse
-layout: true
-class: center, middle, inverse
----
-# Modular Arithmetic %
----
-layout: false
-.left-column[
-## ArrayQueue
-## Mod %
-]
-
-.right-column[
-The modulo operator returns the remainder from a division operation.
-
-Super Awesome integer arithmetic.
-
-**Examples**
-- 7 % 5 = 2 because: 7/5 = 1 r 2
-- 5 % 7 = 5 because: 5/7 = 0 r 5
-- 7 % 7 = 0 because: 7/7 = 1 r 0
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-Finite Array :-( lyk if u cri evry tim
-                                 
-| 1 | 4 |   |   |   |   |
--------------------------
-  f   b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-enqueue(7)
-         (7)    
-| 1 | 4 |   |   |   |   |
--------------------------
-  f   b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-enqueue(7)
-
-| 1 | 4 | 7 |   |   |   |
--------------------------
-  f   b ->b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
+- **Result**
+```python
+>>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-    
-| 1 | 4 | 7 |   |   |   |
--------------------------
-  f       b
+- **Filter**
+```python
+a = []
+for x in range(10):
+        if x%2 ==0:
+            a.append(x)
+b = filter(lambda x: x%2 == 0, range(10))
+c = [x for x in range(10) if x%2 == 0]
 ```
-]
----
-.left-column[
-## ArrayQueue
+- **Result**
+```python
+a == b == c == [0, 2, 4, 6, 8]
+```
 ]
 
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-dequeue(): return a[f]
-  
-| 1 | 4 | 7 |   |   |   |
--------------------------
-  f       b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-dequeue(): return a[f]
-    
-| 1 | 4 | 7 |   |   |   |
--------------------------
-  f ->f    b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-dequeue(): return a[f] -> 1
- (1)  
-|   | 4 | 7 |   |   |   |
--------------------------
-      f   b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-enqueue(8), enqueue(9), enqueue(0)
-
-|   | 4 | 7 | 8 | 9 | 0 |
--------------------------
-      f       -> -> ->b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-dequeue() -> 4, dequeue() -> 7
-
-|   |   |   | 8 | 9 | 0 |
--------------------------
-      f -> -> f       b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-dequeue() -> 4, dequeue() -> 7
-
-|   |   |   | 8 | 9 | 0 |
--------------------------
-              f       b
-```
-]
----
-.left-column[
-## ArrayQueue
-]
-
-.right-column[
-Since we don't have an Infinite Array we'll have to use the modulo and a Finite Array
-```
-enqueue(1), enqueue(2)
-
-| 1 | 2 |   | 8 | 9 | 0 |
--------------------------
- -> ->b       f       ->
-```
-]
----
-name: inverse
-layout: true
-class: center, middle, inverse
----
-# [Robot Video](https://www.youtube.com/watch?v=CDmP-MCKLZ4)
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
