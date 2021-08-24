@@ -133,15 +133,19 @@ layout: false
 ## Types of comprehensions in python
 ]
 .right-column[
+- ## Types of comprehensions
+- **List**
+      - sequence of elements
 
-- **List Comprehensions**
+- **Dictionary**
+      - Key, value pairs where all keys are unique
 
-- **Dictionary Comprehensions**
+- **Set**
+      - Collection of unique elements with no ordering
 
-- **Set Comprehensions**
-
-- **Generator Comprehensions**
-]>
+- **Generator**
+      - Like a list but can be evaluated on access
+]
 
 ---
 
@@ -166,6 +170,21 @@ result = []
 for x in range(10):
         result.append(x)
 ```
+]
+---
+
+layout: false
+.left-column[
+  ## List Comprehensions
+]
+.right-column[
+
+- **Traditional for loop + list append**
+```python
+result = []
+for x in range(10):
+        result.append(x)
+```
 - **List comprehension**
 ```python
 result = [x for x in range(10)]
@@ -176,18 +195,158 @@ result = [x for x in range(10)]
 >>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-- **Filter**
+]
+---
+
+layout: false
+.left-column[
+  ## List Comprehensions
+]
+.right-column[
+
+- ## Filter
+
+- **Loop + append**
 ```python
 a = []
 for x in range(10):
         if x%2 ==0:
             a.append(x)
+```
+
+- **Result**
+```python
+a == [0, 2, 4, 6, 8]
+```
+]
+---
+
+layout: false
+.left-column[
+  ## List Comprehensions
+]
+.right-column[
+- ## Filter
+
+- **Loop + append**
+```python
+a = []
+for x in range(10):
+        if x%2 ==0:
+            a.append(x)
+```
+- **Filter function**
+```python
 b = filter(lambda x: x%2 == 0, range(10))
+```
+
+- **Result**
+```python
+a == b ==  [0, 2, 4, 6, 8]
+```
+]
+---
+
+layout: false
+.left-column[
+  ## List Comprehensions
+]
+.right-column[
+
+- ## Filter
+
+- **Loop + append**
+```python
+a = []
+for x in range(10):
+        if x%2 ==0:
+            a.append(x)
+```
+- **Filter function**
+```python
+b = filter(lambda x: x%2 == 0, range(10))
+```
+- **List Comprehension + conditional**
+```python
 c = [x for x in range(10) if x%2 == 0]
 ```
 - **Result**
 ```python
 a == b == c == [0, 2, 4, 6, 8]
+```
+]
+---
+
+layout: false
+.left-column[
+  ## List Comprehensions
+]
+.right-column[
+
+- ## Map
+
+- **Loop + append**
+```python
+a = []
+for x in range(10):
+        a.append(x*2)
+```
+- **Result**
+```python
+a == [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+```
+]
+---
+
+layout: false
+.left-column[
+  ## List Comprehensions
+]
+.right-column[
+
+- ## Map
+
+- **Loop + append**
+```python
+a = []
+for x in range(10):
+        a.append(x*2)
+```
+- **Map function**
+```python
+b = map(lambda x: x*2, range(10))
+```
+- **Result**
+```python
+a == b == [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+```
+]
+---
+layout: false
+.left-column[
+  ## List Comprehensions
+]
+.right-column[
+
+- ## Map
+
+- **Loop + append**
+```python
+a = []
+for x in range(10):
+        a.append(x*2)
+```
+- **Map function**
+```python
+b = map(lambda x: x*2, range(10))
+```
+- **List Comprehension**
+```python
+c = [x*2 for x in range(10)]
+```
+- **Result**
+```python
+a == b == c == [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 ```
 ]
 ---
@@ -208,16 +367,37 @@ layout: false
   ## Dictionary Comprehensions
 ]
 .right-column[
-- **Traditional for loop + dict element assignment**
+- **For loop + element assignment**
 ```python
-result = {}
+a = {}
 for x in range(5):
-        result[x] = x*2
+        a[x] = x*2
 ```
-- **Dict comprehension**
+
+- **Result**
 ```python
-a = map(lambda x: x*2, range(5))
-b = {x: x*2 for x in range(5)}
+>>> a == {0: 0, 1: 2, 2: 4, 3: 6, 4: 8}
+```
+]
+
+---
+
+layout: false
+.left-column[
+  ## List Comprehensions
+  ## Dictionary Comprehensions
+]
+.right-column[
+- **For loop + element assignment**
+```python
+a = {}
+for x in range(5):
+        a[x] = x*2
+```
+- **Reduce**
+```python
+from functools import reduce
+b = reduce(lambda x, y: {**x, y:y*2}, range(10), result)
 ```
 
 - **Result**
@@ -228,51 +408,32 @@ b = {x: x*2 for x in range(5)}
 
 ---
 
-name: inverse
-layout: true
-class: center, middle, inverse
-
----
-
-# Set Comprehensions
-
----
-
 layout: false
 .left-column[
   ## List Comprehensions
   ## Dictionary Comprehensions
-  ## Set Comprehensions
 ]
 .right-column[
-- **Traditional for loop + list append**
+- **For loop + element assignment**
 ```python
-result = []
-for x in range(10):
-        result.append(x)
+a = {}
+for x in range(5):
+        a[x] = x*2
 ```
-- **List comprehension**
+- **Reduce**
 ```python
-result = [x for x in range(10)]
+from functools import reduce
+b = reduce(lambda x, y: {**x, y:y*2}, range(5), {}})
+```
+
+- **Dict comprehension**
+```python
+c = {x: x*2 for x in range(5)}
 ```
 
 - **Result**
 ```python
->>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-```
-
-- **Filter**
-```python
-a = []
-for x in range(10):
-        if x%2 ==0:
-            a.append(x)
-b = filter(lambda x: x%2 == 0, range(10))
-c = [x for x in range(10) if x%2 == 0]
-```
-- **Result**
-```python
-a == b == c == [0, 2, 4, 6, 8]
+>>> a == b == c =={0: 0, 1: 2, 2: 4, 3: 6, 4: 8}
 ```
 ]
 
@@ -284,48 +445,30 @@ class: center, middle, inverse
 
 ---
 
-# Generator Comprehensions
+# SLICK ONE-LINER
 
 ---
-
 layout: false
-.left-column[
-  ## List Comprehensions
-  ## Dictionary Comprehensions
-  ## Set Comprehensions
-  ## Generator Comprehensions
-]
-.right-column[
-- **Traditional for loop + list append**
+- **Problem**
+
+- Given a list of strings, find the most common string, return that. If there is a tie for most common string, return the last element when ordered alphabetically.
+
+---
+layout: false
+- **Problem**
+- Given a list of strings, find the most common string, return that. If there is a tie for most common string, return the last element when ordered alphabetically.
+
+- **Solution**
+
 ```python
-result = []
-for x in range(10):
-        result.append(x)
-```
-- **List comprehension**
-```python
-result = [x for x in range(10)]
+def mostCommonString(l):
+      lookup = {x: l.count(x), for x in l}
+      max_value = max(lookup.values())
+      topStrings =  sorted([x for x in lookup if lookup[x] >= max_value], reverse=True)
+      return topStrings[0]
 ```
 
-- **Result**
-```python
->>> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-```
 
-- **Filter**
-```python
-a = []
-for x in range(10):
-        if x%2 ==0:
-            a.append(x)
-b = filter(lambda x: x%2 == 0, range(10))
-c = [x for x in range(10) if x%2 == 0]
-```
-- **Result**
-```python
-a == b == c == [0, 2, 4, 6, 8]
-```
-]
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
