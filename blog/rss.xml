@@ -7,6 +7,19 @@
 <description>Grow with Technology</description>
 
 <item>
+<title>Blog</title>
+<link>http://localhost:8000/blog/2023-02-26/</link>
+<description>
+<![CDATA[
+<p>
+test blog these are some example thoughts one might have here's a list this is the first item this is the second this is content&nbsp;<a href="http://localhost:8000/blog/2023-02-26/">...</a>
+</p>
+<p><a href="http://localhost:8000/blog/2023-02-26/">Read More</a></p>
+]]>
+</description>
+<pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+</item>
+<item>
 <title>Test Blog</title>
 <link>http://localhost:8000/blog/test-blog/</link>
 <description>
