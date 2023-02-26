@@ -1,6 +1,9 @@
 site:
 	./makesite.py
 
+blog:
+	vim content/blog/`date -I`.md
+
 serve: site
 	if python3 -c 'import http.server' 2> /dev/null; then \
 	    echo Running Python3 http.server ...; \
