@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+
+<channel>
+<title>News</title>
+<link>http://localhost:8000/</link>
+<description>Grow with Technology</description>
+
+<item>
+<title>Test News</title>
+<link>http://localhost:8000/news/test-news/</link>
+<description>
+<![CDATA[
+<p>
+p1 p2 p3&nbsp;<a href="http://localhost:8000/news/test-news/">...</a>
+</p>
+<p><a href="http://localhost:8000/news/test-news/">Read More</a></p>
+]]>
+</description>
+<pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+</item>
+
+
+</channel>
+</rss>
