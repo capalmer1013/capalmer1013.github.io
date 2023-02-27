@@ -2,8 +2,10 @@
 body {
     margin: 0;
     line-height: 1.5em;
-    color: #333333;
+    /*color: #333333;*/
+    color: #ccc;
     font-family: helvetica, arial, sans-serif;
+    background: #202124;
 }
 
 img {

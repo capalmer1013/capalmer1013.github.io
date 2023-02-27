@@ -222,7 +222,7 @@ def main():
               feed_xml, item_xml, blog='blog', title='Blog', **params)
     make_list(news_posts, '_site/news/rss.xml',
               feed_xml, item_xml, blog='news', title='News', **params)
-    shutil.copytree('_site', '../', dirs_exist_ok=True)
+    shutil.copytree('_site', '../docs/', dirs_exist_ok=True)
 
 
 # Test parameter to be set temporarily by unit tests.
