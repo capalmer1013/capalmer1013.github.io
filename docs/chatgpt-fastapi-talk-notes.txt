@@ -42,7 +42,7 @@ The section highlights the complexity and nuances involved in creating models fo
 ====================================================================
 
 
-Section 5 Summary:
+Section 5 Summary: Neaural Nets
 
 In this section, Wolfram explains neural networks, the most popular and successful approach to tasks like image recognition. Neural networks are inspired by the structure and function of the human brain, with neurons connected in layers that process input signals and produce an output.
 
@@ -220,7 +220,7 @@ Section 3: What Is a Model?
 
 
 
-Section 4 Summary: Models for Human-Like Tasks
+Section 4: Models for Human-Like Tasks
 
 
 - Challenges in creating models for human-like tasks, such as language and image recognition
@@ -230,10 +230,66 @@ Section 4 Summary: Models for Human-Like Tasks
 - Complexity and nuances involved in modeling tasks based on human perception compared to simpler numerical models
 
 
+section 5: Neural Nets
+
+Explanation of neural networks, inspired by the structure and function of the human brain
+Attractors as the key concept in neural networks for performing recognition tasks
+Neural networks computing complex mathematical functions for tasks like recognizing handwritten digits or distinguishing between images of cats and dogs
+Neural networks as useful tools for capturing human-like information processing despite difficulties in explaining their conclusions
+Challenges in developing a comprehensive understanding of pattern recognition in neural networks and extending this challenge to language generation tasks like ChatGPT
 
 
 
+Section 6 Summary: Machine Learning, and the Training of Neural Nets
 
+
+- Training neural networks involves finding the right weights to generalize and reproduce examples
+- Loss function measures the difference between the network's output and desired output, with techniques like gradient descent used to minimize loss
+- Complex problems can be easier to solve with neural nets due to higher-dimensional weight space, but multiple solutions with similar performance may exist
+- Neural net training involves selecting the right architecture, obtaining data, and potentially reusing pre-trained networks or examples
+- Same architecture can work for various tasks, possibly because tasks are generally human-like in nature
+
+
+
+Section 7: The Practice and Lore of Neural Net Training
+
+
+- Neural nets are more effective when using simple components and learning intermediate features and encodings on their own
+- Structuring ideas, like 2D arrays of neurons with local connections, can be useful in specific contexts
+- Determining the size of a neural net for a task is an art, and acquiring or preparing training data presents challenges
+- The learning process involves finding the best weights and tuning hyperparameters, with loss function decreasing as the net is trained
+- Future improvements in neural net training could involve better training methods, fewer bits of precision, or more brain-like architectures for efficiency
+
+
+====== now using gpt 3.5
+
+Section 8, "Surely a Network That’s Big Enough Can Do Anything!"
+
+Section 8 discusses the limitations of neural networks and computational irreducibility, which means some processes cannot be simplified or compressed.
+
+- Humans avoid computational irreducibility by focusing on tasks that don't require complex computations, while computers can perform long, computationally irreducible processes.
+- Neural networks can detect regularities in the natural world, but they cannot perform complex mathematical or computational science tasks without external tools.
+- The author concludes that tasks once thought too complex for computers, like essay writing, are actually computationally shallower than we thought.
+- Neural networks might be able to do what humans can, but they won't capture the full complexity of the natural world or the tools we've created from it.
+
+
+
+Section 9, The Concept of Embeddings
+
+- Section 9 introduces the concept of embeddings, which represent the essence of something like text or images with a collection of numbers.
+- Word embeddings try to place words in a "meaning space" where words with similar meanings are close together, and are constructed by looking at large amounts of text and examining the environments in which different words appear.
+- For images, embeddings are generated using a neural network trained to recognize images, and the intermediate layers are used to generate embeddings that characterize the essence of the image.
+- For words, embeddings are created using a word prediction task trained on large corpora of text, where the output is a list of numbers that gives the probabilities for each possible fill-in word.
+- Overall, embeddings are useful for turning words, sequences of words, or blocks of text into "neural-net-friendly" collections of numbers, which can be used in models like ChatGPT.
+
+
+Section 10: Inside ChatGPT
+
+- ChatGPT is based on GPT-3, a giant neural network with 175 billion weights and designed specifically for language.
+- The architecture used in ChatGPT is called "transformer" and applies the concept of attention to sequences of tokens in a text.
+- ChatGPT operates in three stages, which include converting sequences of tokens into embeddings, processing them through multiple layers of attention blocks, and generating an array of probabilities for possible next tokens.
+- The neural net generates a new token by processing the input sequence of tokens through the layers of the network without any looping or "going back."
+- ChatGPT's setup results in a feedback loop with each iteration explicitly visible as a token in the generated text.
 
 
 
