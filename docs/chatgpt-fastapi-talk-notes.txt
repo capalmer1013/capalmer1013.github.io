@@ -1,0 +1,239 @@
+I'm going to give a 30-45 minutes talk at a hackathon about how to use the chat got api in a project using fastAPI the audience is going to be mostly college computer science students and
+
+
+https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/
+
+====== summarized wolfram paper
+Section 1 Summary: It’s Just Adding One Word at a Time
+
+In this section, Stephen Wolfram provides a high-level explanation of how ChatGPT generates human-like text. ChatGPT works by producing a "reasonable continuation" of the input text based on patterns it has learned from large amounts of data. It generates a ranked list of potential next words, along with their probabilities. To make the generated text more interesting and creative, ChatGPT sometimes picks lower-ranked words randomly, controlled by a parameter called "temperature."
+
+Wolfram demonstrates the process using the simpler GPT-2 model and provides code examples in the Wolfram Language to show how to generate text. He compares the results from the GPT-2 and GPT-3 models, showing that the newer and larger GPT-3 models produce better results.
+
+====================================================================
+
+
+Section 2 Summary: Where Do the Probabilities Come From?
+
+In this section, Wolfram discusses the origins of probabilities used by ChatGPT to generate text. He starts with a simpler problem of generating English text one letter at a time and calculating the probability of each letter. However, this approach produces gibberish, so he moves on to using n-grams, which consider pairs or longer sequences of letters or words.
+
+As the n-grams get longer, the generated text becomes more realistic. However, there is not enough written text to deduce probabilities for all n-grams, especially for longer sequences. The solution is to build a model that estimates the probabilities for unseen sequences. ChatGPT uses a large language model (LLM) to achieve this, allowing it to generate meaningful text despite not having seen every possible sequence in its training data.
+
+====================================================================
+
+
+Section 3 Summary: What Is a Model?
+
+Wolfram introduces the concept of a model, which is essential for making predictions or estimating results in cases where data is not directly available. He uses the example of a cannonball falling from different floors of the Tower of Pisa, demonstrating the process of creating a model to predict fall times for floors with no data. Models can have varying levels of complexity and underlying structure, with different parameters to fit the data.
+
+In the context of ChatGPT, the model has 175 billion parameters. Despite the complexity, the underlying structure of ChatGPT is sufficient to compute next-word probabilities well enough to generate reasonable essay-length text, showcasing the power of models in generating meaningful outputs.
+
+====================================================================
+
+
+Section 4 Summary: Models for Human-Like Tasks
+
+In this section, Wolfram discusses the challenges of creating models for human-like tasks, such as language and image recognition. He uses the example of recognizing handwritten digits and shows how a function can be constructed to classify these digits, even with modifications and distortions.
+
+For the model to be considered successful, it should produce results that typically agree with human perception. However, proving that these models work mathematically is not possible because it would require a mathematical theory of human perception, which varies across species and is influenced by various factors.
+
+The section highlights the complexity and nuances involved in creating models for tasks that rely on human perception and understanding, as opposed to the simpler models created for numerical data.
+
+====================================================================
+
+
+Section 5 Summary:
+
+In this section, Wolfram explains neural networks, the most popular and successful approach to tasks like image recognition. Neural networks are inspired by the structure and function of the human brain, with neurons connected in layers that process input signals and produce an output.
+
+The key to neural networks performing recognition tasks is the notion of attractors. In simple terms, this means that different inputs are attracted to different points or categories based on some measure of similarity or closeness. Neural networks compute complex mathematical functions to achieve this.
+
+Neural networks can be trained to perform tasks such as recognizing handwritten digits or distinguishing between images of cats and dogs. They are considered useful because they capture a human-like way of processing information, even though it might be difficult to explain how they arrive at their conclusions.
+
+The section concludes with the challenges of developing a "theory of cat recognition" in neural networks. While we can observe the processes in neural networks and draw some parallels with human brains, we still lack a comprehensive understanding of how the networks recognize patterns or whether there are ways to summarize what they are doing. This challenge extends to language generation tasks like ChatGPT, where the complexity and richness of language might offer new insights.
+
+====================================================================
+
+
+Section 6 Summary: Machine Learning, and the Training of Neural Nets
+
+
+In this section, the author explains the process of training neural networks to perform tasks by learning from examples. The main goal is to find the right weights for the neural net to generalize and successfully reproduce the examples. A loss function is used to measure how far the network is from achieving the desired output. To minimize the loss, the weights are adjusted using techniques such as gradient descent, which involves following the steepest downward path in the weight space.
+
+Interestingly, it can be easier to solve more complex problems with neural nets than simpler ones, as having more weight variables provides a higher-dimensional space with more directions to reach the minimum. However, there might be multiple solutions that give similar performance, and each solution may exhibit slightly different behavior when extrapolating outside the training data range.
+
+Neural net training involves finding the right architecture, obtaining data for training, and possibly reusing pre-trained networks or their training examples. Although one might expect different architectures for different tasks, it has been found that the same architecture can work for various tasks, possibly because these tasks are generally human-like in nature.
+
+====================================================================
+
+
+Section 7 Summary: The Practice and Lore of Neural Net Training
+
+In the past, there was a belief that neural nets should be made to do as little as possible, with complicated components and explicit algorithmic ideas. However, it was discovered that using simple components and allowing the neural net to learn intermediate features and encodings on its own was more effective. Some structuring ideas, like 2D arrays of neurons with local connections, have proven useful in specific contexts.
+
+Neural nets deal with data, particularly arrays of numbers, which can be rearranged and reshaped during processing. Determining the size of a neural net required for a task is an art, as it's difficult to estimate the complexity of human-like tasks. The architecture of a neural net can be settled upon, but acquiring or preparing training data presents practical challenges.
+
+The learning process in a neural net involves determining the best weights to capture the training examples. There are many choices and hyperparameters to consider, and the loss function should decrease over time as the neural net is trained. Neural net training takes significant computational effort, often limited by the availability of GPUs.
+
+Future improvements in neural net training could involve fundamentally better ways to train, using fewer bits of precision, or even progressive network rewriting. Current neural net training is fundamentally sequential and limited by computer hardware, but a more brain-like architecture could potentially make training more efficient.
+
+====================================================================
+
+
+Section 8, "Surely a Network That’s Big Enough Can Do Anything!", discusses the limitations of neural networks like ChatGPT. The author explains that while neural networks can perform impressive tasks, they cannot do everything due to computational irreducibility. This concept means that some processes cannot be simplified or compressed, and must be computed step by step.
+
+Human brains avoid computational irreducibility by focusing on tasks that don't require complex computations. However, computers can perform long, computationally irreducible processes, which are crucial in the modern technological world. Neural networks can detect regularities in the natural world that humans can also notice, but they cannot perform complex mathematical or computational science tasks without using an external computational system as a tool.
+
+The author concludes that tasks we once thought were too complex for computers, like essay writing, are actually computationally shallower than we thought. A large neural network might be able to do what humans can, but it won't capture the full complexity of the natural world or the tools we've created from it. These tools allow us to go beyond the limits of unaided human thought and harness the power of the physical and computational universe.
+
+====================================================================
+
+
+Section 9, The Concept of Embeddings, discusses the idea of embeddings, which are a way to represent the "essence" of something, like text, with an array of numbers. Word embeddings try to place words in a "meaning space" where words with similar meanings are close together. These embeddings are constructed by looking at large amounts of text and examining how similar the environments are in which different words appear.
+
+Embeddings can also be used for images by training a neural network to recognize images, then using the intermediate layers of the network to generate embeddings that characterize the essence of the image. This approach can be generalized for a wide range of images by anchoring the embeddings in common object types, which results in embeddings that seem right to us and are useful for performing human-judgment-like tasks.
+
+For words, embeddings are created using a word prediction task, which is trained on large corpora of text. The input for the neural network is a sequence of words, and the output is a list of numbers that give the probabilities for each possible fill-in word. To find an embedding, the neural network is intercepted just before it reaches its conclusion, and the list of numbers that characterize each word is picked up.
+
+Overall, embeddings are a useful way to turn words, sequences of words, or blocks of text into "neural-net-friendly" collections of numbers, which can be used in models like ChatGPT.
+
+
+====================================================================
+
+
+Section 10: Inside ChatGPT
+
+ChatGPT is based on the GPT-3 network, which is a giant neural net with 175 billion weights. It's designed specifically for dealing with language and utilizes an architecture called "transformer" to do so. Transformers apply the concept of "attention" to sequences of tokens in a text, allowing the model to "pay attention" more to some parts of the sequence than others.
+
+ChatGPT operates in three stages:
+
+It converts the sequence of tokens in the text into an array of numbers (embeddings).
+It processes these embeddings using multiple layers of attention blocks (12 for GPT-2, 96 for GPT-3) to produce a new array of numbers.
+It takes the last part of this array and generates an array of around 50,000 values representing probabilities for different possible next tokens.
+Every part of this pipeline is implemented using a neural network, whose weights are determined by end-to-end training of the network. Various details go into setting up the architecture, such as the embedding module, attention blocks, and attention heads. Although the architecture may seem complicated, the underlying elements are relatively simple, consisting of artificial neurons performing basic operations with numerical inputs and combining them with certain weights.
+
+ChatGPT's neural net generates a new token by processing the input sequence of tokens through the layers of the network. There is no looping or "going back"; everything just feeds forward through the network. However, an "outer loop" reuses computational elements, as ChatGPT always takes the whole sequence of tokens, including previously generated tokens, as input when generating a new token. This setup results in a feedback loop, with each iteration explicitly visible as a token in the generated text.
+
+====================================================================
+
+
+Section 11: The Training of ChatGPT
+
+ChatGPT is trained using a large corpus of text from various sources like the web, books, etc. To set up the 175 billion weights in its neural net, it is fed with a few hundred billion words of text. The training process involves presenting batches of examples and adjusting weights in the network to minimize the error made on those examples. The process is computationally intensive and involves billions of dollars in training efforts.
+
+====================================================================
+
+
+Section 12: Beyond basic training, an important part of ChatGPT's construction involves having humans interact with it, giving feedback and rating results. Another neural net model predicts these ratings, which is used like a loss function to tune the original network based on human feedback. This process improves the system's ability to produce "human-like" output. Once trained, ChatGPT can remember and make use of information given to it as part of the prompt, much like humans. It can integrate new information if it fits within the framework it already knows. However, for "deep" computations involving computationally irreducible steps, neural nets, like humans, would need to use actual computational tools.
+
+====================================================================
+
+
+Section 13: What Really Lets ChatGPT Work?
+
+ChatGPT, an artificial neural network, is capable of generating human language with its vast number of connections. It demonstrates that human language is fundamentally simpler than it seems, allowing ChatGPT to capture its essence. The success of ChatGPT suggests that there are new "laws of language" and "laws of thought" waiting to be discovered. Making these laws explicit could lead to more direct, efficient, and transparent methods for language generation.
+
+Syntax is one example of a "law of language." ChatGPT doesn't have explicit knowledge of grammatical rules, but it implicitly discovers them through training. Transformer neural networks like ChatGPT can learn the nested-tree-like syntactic structure of human languages. Syntax provides a constraint on language, but other constraints exist as well.
+
+Meaningfulness is another constraint on language. While there is no traditional overall theory for determining whether a sentence is meaningful, ChatGPT can be seen as having implicitly developed a theory through its training. Logic, for example, is one corner of this theory that has been known for millennia. ChatGPT can be expected to produce text containing correct inferences based on syllogistic logic, but it may struggle with more sophisticated formal logic.
+
+The ability to construct or recognize meaningful text might be attributed to ChatGPT's neural net weights. However, there is a possibility that there is a simpler and stronger underlying story that could be uncovered.
+
+====================================================================
+
+
+Section 14: Meaning Space and Semantic Laws of Motion
+
+In ChatGPT, a piece of text is represented by an array of numbers or coordinates in a "linguistic feature space." To generate meaningful text, ChatGPT traces out a trajectory in this space. One might wonder if there are "semantic laws of motion" that define or constrain how points in linguistic feature space can move while preserving meaningfulness.
+
+Linguistic feature space places semantically similar words nearby, and by looking at how sentences containing a word lay out in this space, one can often distinguish different meanings. However, it is unclear what additional structure can be identified in this space or what kind of embedding would most naturally express any "semantic law of motion."
+
+Examining the trajectories in feature space and the probabilities of different words coming next, it is challenging to identify any "geometrically obvious" law of motion. The search for "mathematical-physics-like" semantic laws of motion may require looking at different variables or coordinate systems. As of now, it is difficult to empirically decode from ChatGPT's internal behavior what it has discovered about how human language is put together.
+
+
+====================================================================
+
+
+Section 15: Semantic Grammar and the Power of Computational Language
+
+The success of ChatGPT suggests that there may be more structure and simplicity to meaningful human language than previously known, and that there may be simple rules for creating it. While syntactic grammar provides rules for constructing sentences, semantic grammar deals with meaning. Semantic grammar would involve identifying finer semantic concepts and creating rules that determine how they can fit together.
+
+The development of computational language, such as the Wolfram Language, has allowed for precise symbolic representations of various concepts and enabled computations about them. A complete symbolic discourse language would require building additional calculi for general world knowledge.
+
+A symbolic discourse language could be used for generating locally and globally meaningful text, making standalone statements, asking questions, stating intentions, and making assertions. Computational language has a fundamental precision, as it is unambiguously executed on a computer, unlike human language, which relies on a social contract and can be vague.
+
+Creating a fundamental ontology suitable for a general symbolic discourse language is a complex task. However, the success of ChatGPT suggests that it may be feasible to construct a more complete computational language that is human-understandable. This language could form the basis for generalized semantic logic, enabling precise and formal work with concepts previously only accessible through vague human language.
+
+Applying ChatGPT to computational language could combine the power of the underlying language with the sense of "what's popular," making it a system that not only generates reasonable text but also evaluates its correctness in relation to the world or its intended context.
+
+
+====================================================================
+
+
+Section 16: So … What Is ChatGPT Doing, and Why Does It Work?
+
+ChatGPT is trained on a vast amount of human-created text and generates text that resembles its training data. The neural net is made of billions of simple elements, and its basic operation involves passing input through these elements for every new word generated. Surprisingly, this process can produce coherent human language that follows prompts and makes use of its training content.
+
+While ChatGPT doesn't always make global sense, it often produces human-like results, suggesting that human language and thinking patterns might be simpler and more structured than previously thought. This can potentially be explicitly exposed through semantic grammar and computational language.
+
+It's unclear if ChatGPT works like a brain, but certain aspects of language generation might be similar. However, ChatGPT's training strategy differs from the brain's learning process, and its lack of internal loops or recomputation limits its computational capability. To enhance its brain-like functions, one would need to maintain training efficiency while incorporating such features.
+
+Despite these limitations, ChatGPT is an impressive example of how simple computational elements can achieve remarkable results, and it serves as a strong impetus for understanding human language and thinking processes better.
+
+
+====================================================================
+
+
+outline
+
+prompt:
+
+write a series of 3-5 bullet points about the following summary:
+
+section 1: It’s Just Adding One Word at a Time
+
+- ChatGPT generates human-like text based on patterns learned from vast amounts of data
+- Produces a ranked list of potential next words with associated probabilities
+- Adds creativity by occasionally selecting lower-ranked words, controlled by a "temperature" parameter
+- Demonstrates the process using GPT-2 and provides Wolfram Language code examples
+- GPT-3, a newer and larger model, produces superior results compared to GPT-2
+
+
+section 2: Where Do the Probabilities Come From?
+
+- Wolfram explores the origins of probabilities used by ChatGPT in text generation
+- Starts with single-letter generation, but this results in gibberish
+- Introduces n-grams, which consider sequences of letters or words, improving text realism
+- Insufficient written text to deduce probabilities for all n-grams, especially long sequences
+- ChatGPT uses a large language model (LLM) to estimate probabilities for unseen sequences, enabling meaningful text generation
+
+
+Section 3: What Is a Model?
+
+
+- Wolfram explains the concept of a model for making predictions or estimating results when data is unavailable
+- Uses the Tower of Pisa cannonball example to demonstrate model creation for predicting fall times
+- Models can vary in complexity and underlying structure, with different parameters to fit data
+- ChatGPT's model consists of 175 billion parameters
+- The model's complexity and structure allows it to compute next-word probabilities and generate essay-length text effectively
+
+
+
+
+Section 4 Summary: Models for Human-Like Tasks
+
+
+- Challenges in creating models for human-like tasks, such as language and image recognition
+- Example of recognizing handwritten digits and constructing a function for classification
+- Success of a model depends on its agreement with human perception
+- Impossibility of mathematically proving model success due to lack of a mathematical theory of human perception
+- Complexity and nuances involved in modeling tasks based on human perception compared to simpler numerical models
+
+
+
+
+
+
+
+
+
