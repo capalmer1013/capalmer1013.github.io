@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unleashing the Power of ChatGPT</title>
+    <meta charset="utf-8">
+	<style>
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      img { max-width: 100%;}
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Unleashing the Power of ChatGPT
+## Building a Backend for a Web App with FastAPI
+
+[Chris Palmer](https://github.com/capalmer1013)
+
+---
+layout: false
+.left-column[
+## It's Just Adding One Word at a Time
+]
+.right-column[
+- ChatGPT generates human-like text based on patterns learned from vast amounts of data
+
+- Produces a ranked list of potential next words with associated probabilities
+
+- Adds creativity by occasionally selecting lower-ranked words, controlled by a "temperature" parameter
+
+- Demonstrates the process using GPT-2 and provides Wolfram Language code examples
+
+- GPT-3, a newer and larger model, produces superior results compared to GPT-2
+]
+
+---
+
+layout: false
+.left-column[
+  ## Where Do the Probabilities Come From?
+  
+]
+.right-column[
+- Wolfram explores the origins of probabilities used by ChatGPT in text generation
+
+- Starts with single-letter generation, but this results in gibberish
+
+- Introduces n-grams, which consider sequences of letters or words, improving text realism
+
+- Insufficient written text to deduce probabilities for all n-grams, especially long sequences
+
+- ChatGPT uses a large language model (LLM) to estimate probabilities for unseen sequences, enabling meaningful text generation
+
+]
+---
+
+
+layout: false
+.left-column[
+## What Is a Model?
+]
+.right-column[
+- Wolfram explains the concept of a model for making predictions or estimating results when data is unavailable
+
+- Uses the Tower of Pisa cannonball example to demonstrate model creation for predicting fall times
+
+- Models can vary in complexity and underlying structure, with different parameters to fit data
+
+- ChatGPT's model consists of 175 billion parameters
+
+- The model's complexity and structure allows it to compute next-word probabilities and generate essay-length text effectively
+]
+
+
+---
+layout: false
+.left-column[
+## Models for Human-Like Tasks
+]
+.right-column[
+# Reflections
+- Challenges in creating models for human-like tasks, such as language and image recognition
+
+- Example of recognizing handwritten digits and constructing a function for classification
+
+- Success of a model depends on its agreement with human perception
+
+- Impossibility of mathematically proving model success due to lack of a mathematical theory of human perception
+
+- Complexity and nuances involved in modeling tasks based on human perception compared to simpler numerical models
+
+]
+---
+layout: false
+.left-column[
+## Neural Nets
+
+]
+.right-column[
+- Explanation of neural networks, inspired by the structure and function of the human brain
+
+- Attractors as the key concept in neural networks for performing recognition tasks
+
+- Neural networks computing complex mathematical functions for tasks like recognizing handwritten digits or distinguishing between images of cats and dogs
+
+- Neural networks as useful tools for capturing human-like information processing despite difficulties in explaining their conclusions
+
+- Challenges in developing a comprehensive understanding of pattern recognition in neural networks and extending this challenge to language generation tasks like ChatGPT
+
+]
+---
+
+layout: false
+.left-column[
+  ## Machine Learning, and the Training of Neural Nets
+  
+]
+.right-column[
+- Training neural networks involves finding the right weights to generalize and reproduce examples
+
+- Loss function measures the difference between the network's output and desired output, with techniques like gradient descent used to minimize loss
+
+- Complex problems can be easier to solve with neural nets due to higher-dimensional weight space, but multiple solutions with similar performance may exist
+
+- Neural net training involves selecting the right architecture, obtaining data, and potentially reusing pre-trained networks or examples
+
+- Same architecture can work for various tasks, possibly because tasks are generally human-like in nature
+
+]
+
+---
+
+layout: false
+.left-column[
+  ## The Practice and Lore of Neural Net Training
+  
+]
+.right-column[
+- Neural nets are more effective when using simple components and learning intermediate features and encodings on their own
+
+- Structuring ideas, like 2D arrays of neurons with local connections, can be useful in specific contexts
+
+- Determining the size of a neural net for a task is an art, and acquiring or preparing training data presents challenges
+
+- The learning process involves finding the best weights and tuning hyperparameters, with loss function decreasing as the net is trained
+
+- Future improvements in neural net training could involve better training methods, fewer bits of precision, or more brain-like architectures for efficiency
+
+]
+
+---
+
+layout: false
+.left-column[
+  ## "Surely a Network That's Big Enough Can Do Anything!"
+  
+]
+.right-column[
+- Limitations of neural networks and computational irreducibility, which means some processes cannot be simplified or compressed.
+
+- Humans avoid computational irreducibility by focusing on tasks that don't require complex computations, while computers can perform long, computationally irreducible processes.
+
+- Neural networks can detect regularities in the natural world, but they cannot perform complex mathematical or computational science tasks without external tools.
+
+- The author concludes that tasks once thought too complex for computers, like essay writing, are actually computationally shallower than we thought.
+
+- Neural networks might be able to do what humans can, but they won't capture the full complexity of the natural world or the tools we've created from it.
+
+]
+
+---
+
+layout: false
+.left-column[
+  ## The Concept of Embeddings
+  
+]
+.right-column[
+- Section 9 introduces the concept of embeddings, which represent the essence of something like text or images with a collection of numbers.
+
+- Word embeddings try to place words in a "meaning space" where words with similar meanings are close together, and are constructed by looking at large amounts of text and examining the environments in which different words appear.
+
+- For images, embeddings are generated using a neural network trained to recognize images, and the intermediate layers are used to generate embeddings that characterize the essence of the image.
+
+- For words, embeddings are created using a word prediction task trained on large corpora of text, where the output is a list of numbers that gives the probabilities for each possible fill-in word.
+
+- Overall, embeddings are useful for turning words, sequences of words, or blocks of text into "neural-net-friendly" collections of numbers, which can be used in models like ChatGPT.
+]
+
+---
+
+layout: false
+.left-column[
+  ## Inside ChatGPT
+  
+]
+.right-column[
+- ChatGPT is based on GPT-3, a giant neural network with 175 billion weights and designed specifically for language.
+
+- The architecture used in ChatGPT is called "transformer" and applies the concept of attention to sequences of tokens in a text.
+
+- ChatGPT operates in three stages, which include converting sequences of tokens into embeddings, processing them through multiple layers of attention blocks, and generating an array of probabilities for possible next tokens.
+
+- The neural net generates a new token by processing the input sequence of tokens through the layers of the network without any looping or "going back."
+
+- ChatGPT's setup results in a feedback loop with each iteration explicitly visible as a token in the generated text.
+
+]
+
+---
+
+layout: false
+.left-column[
+  ## The Training of ChatGPT
+  
+]
+.right-column[
+- ChatGPT is trained on a large corpus of text from various sources.
+
+- The training process involves presenting batches of examples and adjusting weights in the network to minimize the error made on those examples.
+
+- The training process is computationally intensive and involves billions of dollars in training efforts.
+
+]
+
+---
+
+layout: false
+.left-column[
+  ## Beyond Basic Training
+  
+]
+.right-column[
+- ChatGPT's construction involves human interaction and feedback, with another neural net model predicting these ratings as a loss function to tune the original network based on human feedback, improving its ability to produce human-like output.
+
+- ChatGPT can remember and make use of information given to it as part of the prompt and integrate new information within the framework it already knows.
+
+- For deep computations involving computationally irreducible steps, neural nets like ChatGPT and humans would need to use actual computational tools.
+
+]
+
+---
+
+layout: false
+.left-column[
+  ## What Really Lets ChatGPT Work?
+  
+]
+.right-column[
+- ChatGPT's success suggests that human language is fundamentally simpler than it seems, which can be captured by the neural network's vast connections.
+
+- The implicit discovery of grammatical rules and syntactic structure, and the ability to recognize meaningful text, can be attributed to ChatGPT's neural net weights, although there may be a simpler underlying story waiting to be uncovered.
+
+- ChatGPT's ability to produce text containing correct inferences based on syllogistic logic is an example of how it can be seen as having implicitly developed a theory of meaningfulness through its training.
+]
+
+---
+
+layout: false
+.left-column[
+  ## Meaning Space and Semantic Laws of Motion
+  
+]
+.right-column[
+- ChatGPT represents a piece of text as an array of numbers in a linguistic feature space, with semantically similar words placed nearby.
+
+- The search for "semantic laws of motion" in this space is ongoing, but it is challenging to identify any "geometrically obvious" law of motion by examining the trajectories and probabilities of different words coming next.
+
+- The exploration of new variables or coordinate systems may be required to discover more about how human language is put together, and what "semantic laws of motion" govern it.
+
+]
+
+---
+
+layout: false
+.left-column[
+  ## Semantic Grammar and the Power of Computational Language
+  
+]
+.right-column[
+- ChatGPT's success suggests that there may be simple rules for creating meaningful human language, and that a complete symbolic discourse language could be constructed.
+
+- Semantic grammar deals with meaning, and developing rules for finer semantic concepts could enable the creation of a complete symbolic discourse language.
+
+- Computational language, like the Wolfram Language, allows for precise symbolic representations of concepts and unambiguous execution on a computer, unlike human language.
+
+- Creating a fundamental ontology suitable for a general symbolic discourse language is complex, but ChatGPT's success suggests it may be feasible.
+
+- ChatGPT could be applied to computational language to combine the power of the underlying language with the sense of "what's popular," resulting in a system that not only generates text but also evaluates its correctness in relation to the world or context.
+]
+
+---
+
+layout: false
+.left-column[
+  ## So … What Is ChatGPT Doing, and Why Does It Work?
+  
+]
+.right-column[
+- ChatGPT is trained on vast amounts of human-created text and generates coherent human language that follows prompts and makes use of its training content.
+
+- The success of ChatGPT suggests that human language and thinking patterns might be simpler and more structured than previously thought.
+
+- ChatGPT's training strategy differs from the brain's learning process, and its lack of internal loops or recomputation limits its computational capability.
+
+- ChatGPT is an impressive example of how simple computational elements can achieve remarkable results, serving as a strong impetus for understanding human language and thinking processes better.
+
+- Enhancing ChatGPT's brain-like functions would require maintaining training efficiency while incorporating features such as internal loops or recomputation.
+]
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+# Thanks
+
+[Arduino Ray Tracer Repo](https://github.com/capalmer1013/arduino-lcd-raytracer)
+
+
+
+---
+
+layout: false
+.left-column[
+  ## Additional Resources
+  
+]
+.right-column[
+- ["What Is ChatGPT Doing … and Why Does It Work?"](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)
+- ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762)
+
+]
+
+---
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
