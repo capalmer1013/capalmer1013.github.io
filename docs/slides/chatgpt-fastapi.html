@@ -493,7 +493,7 @@ layout: false
   ## Setting up the Development Environment
 ]
 .right-column[
-- Install Python (3.7+ recommended)
+- Install Python (3.11+ recommended)
 
 - Create and activate virtual environment with `venv`
 
@@ -511,18 +511,23 @@ layout: false
   ## Project Structure
 ]
 .right-column[
-- Organize files and folders effectively
-
-- Example folder structure
-    - app/
-        - models/
-        - schemas/
-        - api/
-    - main.py
-
-- Emphasis on a well-structured project
-
-- Facilitate maintainability and collaboration
+```bash
+chatgpt_tutoring/
+    app/
+        models/
+            __init__.py
+            tutor.py
+            student.py
+        schemas/
+            __init__.py
+            tutor.py
+            student.py
+        api/
+            __init__.py
+            tutor.py
+            student.py
+    main.py
+```
 ]
 
 ---
@@ -532,15 +537,203 @@ layout: false
   ## Building the FastAPI Application
 ]
 .right-column[
-- Main application file creation (`main.py`)
+## main.py
 
-- Setup routing using FastAPI's decorator system
+Now let's create the basic FastAPI app in main.py:
 
-- Configure middleware for CORS, security, and more
+```python
+from fastapi import FastAPI
+from app.api import tutor, student
 
-- Use asynchronous functions for better performance
+app = FastAPI()
 
-- Validation using Pydantic models
+app.include_router(tutor.router, prefix="/tutors")
+app.include_router(student.router, prefix="/students")
+```
+]
+
+---
+layout: false
+.left-column[
+  ## Building the FastAPI Application
+]
+.right-column[
+## Models
+
+`app/models/tutor.py`
+
+```python
+# app/models/tutor.py
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+class Tutor(Base):
+    __tablename__ = "tutors"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    subject = Column(String, index=True)
+```
+]
+
+---
+layout: false
+.left-column[
+  ## Building the FastAPI Application
+]
+.right-column[
+## Models
+
+`app/models/student.py`
+
+```python
+# app/models/student.py
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+class Student(Base):
+    __tablename__ = "students"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    grade = Column(Integer, index=True)
+```
+]
+
+---
+layout: false
+.left-column[
+  ## Building the FastAPI Application
+]
+.right-column[
+## Schemas
+
+`app/schemas/tutor.py`
+
+```python
+# app/schemas/tutor.py
+from pydantic import BaseModel
+
+class TutorBase(BaseModel):
+    name: str
+    subject: str
+
+class TutorCreate(TutorBase):
+    pass
+
+class Tutor(TutorBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+```
+]
+
+---
+layout: false
+.left-column[
+  ## Building the FastAPI Application
+]
+.right-column[
+## Schemas
+
+`app/schemas/student.py`
+
+```python
+# app/schemas/student.py
+from pydantic import BaseModel
+
+class StudentBase(BaseModel):
+    name: str
+    grade: int
+
+class StudentCreate(StudentBase):
+    pass
+
+class Student(StudentBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+```
+]
+
+---
+layout: false
+.left-column[
+  ## Building the FastAPI Application
+]
+.right-column[
+## CRUD operations
+
+`app/api/tutor.py`
+
+```python
+# app/api/tutor.py
+from fastapi import APIRouter
+from app.schemas import tutor as tutor_schema
+from app.models import tutor as tutor_model
+
+router = APIRouter()
+
+@router.post("/", response_model=tutor_schema.Tutor)
+def create_tutor(tutor: tutor_schema.TutorCreate):
+    pass
+
+@router.get("/{tutor_id}", response_model=tutor_schema.Tutor)
+def get_tutor(tutor_id: int):
+    pass
+
+@router.put("/{tutor_id}", response_model=tutor_schema.Tutor)
+def update_tutor(tutor_id: int, tutor: tutor_schema.TutorCreate):
+    pass
+
+@router.delete("/{tutor_id}")
+def delete_tutor(tutor_id: int):
+    pass
+
+```
+]
+
+---
+layout: false
+.left-column[
+  ## Building the FastAPI Application
+]
+.right-column[
+## CRUD operations
+
+`app/api/student.py`
+
+```python
+# app/api/student.py
+from fastapi import APIRouter
+from app.schemas import student as student_schema
+from app.models import student as student_model
+
+router = APIRouter()
+
+@router.post("/", response_model=student_schema.Student)
+def create_student(student: student_schema.StudentCreate):
+  pass
+
+@router.get("/{student_id}", response_model=student_schema.Student)
+def get_student(student_id: int):
+  pass
+
+@router.put("/{student_id}", response_model=student_schema.Student)
+def update_student(student_id: int, student: student_schema.StudentCreate):
+  pass
+
+@router.delete("/{student_id}")
+def delete_student(student_id: int):
+  pass
+```
 ]
 
 ---
