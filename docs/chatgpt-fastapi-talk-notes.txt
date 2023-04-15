@@ -292,4 +292,53 @@ Section 10: Inside ChatGPT
 - ChatGPT's setup results in a feedback loop with each iteration explicitly visible as a token in the generated text.
 
 
+Section 11: The Training of ChatGPT
+
+- ChatGPT is trained on a large corpus of text from various sources.
+- The training process involves presenting batches of examples and adjusting weights in the network to minimize the error made on those examples.
+- The training process is computationally intensive and involves billions of dollars in training efforts.
+
+
+Section 12: Beyond Basic Training
+
+- ChatGPT's construction involves human interaction and feedback, with another neural net model predicting these ratings as a loss function to tune the original network based on human feedback, improving its ability to produce human-like output.
+- ChatGPT can remember and make use of information given to it as part of the prompt and integrate new information within the framework it already knows.
+- For deep computations involving computationally irreducible steps, neural nets like ChatGPT and humans would need to use actual computational tools.
+
+
+Section 13: What Really Lets ChatGPT Work?
+
+- ChatGPT's success suggests that human language is fundamentally simpler than it seems, which can be captured by the neural network's vast connections.
+- The implicit discovery of grammatical rules and syntactic structure, and the ability to recognize meaningful text, can be attributed to ChatGPT's neural net weights, although there may be a simpler underlying story waiting to be uncovered.
+- ChatGPT's ability to produce text containing correct inferences based on syllogistic logic is an example of how it can be seen as having implicitly developed a theory of meaningfulness through its training.
+
+
+Section 14: Meaning Space and Semantic Laws of Motion
+- ChatGPT represents a piece of text as an array of numbers in a linguistic feature space, with semantically similar words placed nearby.
+- The search for "semantic laws of motion" in this space is ongoing, but it is challenging to identify any "geometrically obvious" law of motion by examining the trajectories and probabilities of different words coming next.
+- The exploration of new variables or coordinate systems may be required to discover more about how human language is put together, and what "semantic laws of motion" govern it.
+
+
+Section 15: Semantic Grammar and the Power of Computational Language
+
+- ChatGPT's success suggests that there may be simple rules for creating meaningful human language, and that a complete symbolic discourse language could be constructed.
+- Semantic grammar deals with meaning, and developing rules for finer semantic concepts could enable the creation of a complete symbolic discourse language.
+- Computational language, like the Wolfram Language, allows for precise symbolic representations of concepts and unambiguous execution on a computer, unlike human language.
+- Creating a fundamental ontology suitable for a general symbolic discourse language is complex, but ChatGPT's success suggests it may be feasible.
+- ChatGPT could be applied to computational language to combine the power of the underlying language with the sense of "what's popular," resulting in a system that not only generates text but also evaluates its correctness in relation to the world or context.
+
+
+Section 16: So … What Is ChatGPT Doing, and Why Does It Work?
+
+
+- ChatGPT is trained on vast amounts of human-created text and generates coherent human language that follows prompts and makes use of its training content.
+- The success of ChatGPT suggests that human language and thinking patterns might be simpler and more structured than previously thought.
+- ChatGPT's training strategy differs from the brain's learning process, and its lack of internal loops or recomputation limits its computational capability.
+- ChatGPT is an impressive example of how simple computational elements can achieve remarkable results, serving as a strong impetus for understanding human language and thinking processes better.
+- Enhancing ChatGPT's brain-like functions would require maintaining training efficiency while incorporating features such as internal loops or recomputation.
+
+
+
+
+
 
